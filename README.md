@@ -1,1 +1,2 @@
-# spring-ai-essential-examples
+# spring-ai-examples
+
