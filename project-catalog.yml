@@ -1,0 +1,12 @@
+---
+project-repositories:
+- name: "output-parsers"
+  description: "Using Spring AI prompt templates and output parsers"
+  url: "https://github.com/habuma/spring-ai-essential-examples?subPath=prompts-and-output-parsers"
+  tags:
+  - "java-17"
+  - "boot-3.2.x"
+  - "ai"
+  - "spring-ai"
+  - "output-parsers"
+  - "prompt templates"
