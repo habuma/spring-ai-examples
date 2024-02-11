@@ -39,7 +39,11 @@ project's original Boot version will remain unchanged and you
 may get build or test errors. You'll need to update your Boot
 version to the version of the example project to fix the build.
 
-Also note that the project catalog includes a Spring AI RAG example
-that is maintained in a [separate Git repository](https://github.com/habuma/spring-ai-rag-example). Because it's in the
-project catalog, you can use the Spring CLI to create that project
-as well.
+Also note that the project catalog includes a few examples
+that are maintained in separate Git repositories:
+
+- [Spring AI RAG](https://github.com/habuma/spring-ai-rag-example).
+- [SpeechAI](https://github.com/habuma/speechai)
+
+Because they're in the project catalog, you can use the Spring CLI
+to create those projects as well.
