@@ -10,3 +10,12 @@ project-repositories:
   - "spring-ai"
   - "output-parsers"
   - "prompt templates"
+- name: "rag"
+  description: "Spring AI with Retrieval Augmented Generation (RAG)"
+  url: "https://github.com/habuma/spring-ai-rag-example"
+  tags:
+  - "java-17"
+  - "boot-3.2.x"
+  - "ai"
+  - "spring-ai"
+  - "rag"

@@ -1,6 +1,6 @@
 # Spring AI Examples
 
-This repository is where I'll add various examples of using Spring AI.
+This repository is where I'll commit various examples of using Spring AI.
 
 You can clone this project in its entirety and work with it like that. *Or* better, use the [SpringCLI](https://docs.spring.io/spring-boot/docs/current/reference/html/cli.html)
 to select individual projects and create them locally.
@@ -38,3 +38,8 @@ newer versions of Spring Boot than your project. If so, your
 project's original Boot version will remain unchanged and you
 may get build or test errors. You'll need to update your Boot
 version to the version of the example project to fix the build.
+
+Also note that the project catalog includes a Spring AI RAG example
+that is maintained in a [separate Git repository](https://github.com/habuma/spring-ai-rag-example). Because it's in the
+project catalog, you can use the Spring CLI to create that project
+as well.
