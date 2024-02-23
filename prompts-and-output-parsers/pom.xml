@@ -5,17 +5,17 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.2</version>
+        <version>3.2.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>habuma</groupId>
-    <artifactId>spring-ai-essential-example</artifactId>
+    <artifactId>prompts-and-output-parsers</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-ai-essential-example</name>
-    <description>spring-ai-essential-example</description>
+    <name>prompts-and-output-parsers</name>
+    <description>prompts-and-output-parsers</description>
     <properties>
         <java.version>17</java.version>
-        <SPRING-AI-VERSION>0.8.0-SNAPSHOT</SPRING-AI-VERSION>
+        <SPRING-AI-VERSION>0.8.0</SPRING-AI-VERSION>
     </properties>
     <dependencies>
         <dependency>
@@ -47,11 +47,11 @@
 
     <repositories>
         <repository>
-            <id>spring-snapshot</id>
-            <name>Spring Snapshot Repository</name>
-            <url>https://repo.spring.io/snapshot</url>
+            <id>spring-milestone</id>
+            <name>Spring Milestone Repository</name>
+            <url>https://repo.spring.io/milestone</url>
             <snapshots>
-                <enabled>true</enabled>
+                <enabled>false</enabled>
             </snapshots>
         </repository>
     </repositories>
