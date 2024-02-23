@@ -6,7 +6,6 @@ import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.openai.OpenAiChatOptions;
-import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -29,22 +28,6 @@ public class SpringAiFunctionsApplication {
     @Description("Get the wait time for a Disneyland attraction in minutes")
     public Function<WaitTimeService.Request, WaitTimeService.Response> getWaitTime() {
         return new WaitTimeService();
-    }
-
-    @Bean
-    ApplicationRunner go(ChatClient chatClient) {
-        return args -> {
-            UserMessage userMessage =
-                    new UserMessage("What's the wait time for Jungle Cruise?");
-
-            ChatResponse response = chatClient.call(new Prompt(
-                    List.of(userMessage),
-                    OpenAiChatOptions.builder()
-                            .withFunction("getWaitTime")
-                            .build()));
-
-            System.err.println("RESPONSE: " + response.getResult().getOutput().getContent());
-        };
     }
 
     @Bean
