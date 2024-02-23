@@ -1,5 +1,25 @@
 ---
 project-repositories:
+- name: "functions"
+  description: "Using Spring AI with OpenAI Functions"
+  url: "https://github.com/habuma/spring-ai-essential-examples?subPath=spring-ai-functions"
+  tags:
+  - "java-17"
+  - "boot-3.2.x"
+  - "ai"
+  - "spring-ai"
+  - "gemma"
+  - "ollama"
+- name: "gemma"
+  description: "Using Spring AI with the Gemma 2b model"
+  url: "https://github.com/habuma/spring-ai-essential-examples?subPath=spring-ai-gemma"
+  tags:
+  - "java-17"
+  - "boot-3.2.x"
+  - "ai"
+  - "spring-ai"
+  - "functions"
+  - "openai"
 - name: "output-parsers"
   description: "Using Spring AI prompt templates and output parsers"
   url: "https://github.com/habuma/spring-ai-essential-examples?subPath=prompts-and-output-parsers"
