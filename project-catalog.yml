@@ -2,7 +2,7 @@
 project-repositories:
 - name: "spring-ai-functions"
   description: "Using Spring AI with OpenAI Functions"
-  url: "https://github.com/habuma/spring-ai-essential-examples?subPath=spring-ai-functions"
+  url: "https://github.com/habuma/spring-ai-examples?subPath=spring-ai-functions"
   tags:
   - "java-21"
   - "boot-3.2.x"
@@ -12,9 +12,9 @@ project-repositories:
   - "ollama"
 - name: "spring-ai-gemma"
   description: "Using Spring AI with the Gemma 2b model"
-  url: "https://github.com/habuma/spring-ai-essential-examples?subPath=spring-ai-gemma"
+  url: "https://github.com/habuma/spring-ai-examples?subPath=spring-ai-gemma"
   tags:
-  - "java-17"
+  - "java-21"
   - "boot-3.2.x"
   - "ai"
   - "spring-ai"
@@ -22,9 +22,9 @@ project-repositories:
   - "openai"
 - name: "spring-ai-imagegen"
   description: "Using Spring AI to generate images"
-  url: "https://github.com/habuma/spring-ai-essential-examples?subPath=spring-ai-image-gen"
+  url: "https://github.com/habuma/spring-ai-examples?subPath=spring-ai-image-gen"
   tags:
-  - "java-17"
+  - "java-21"
   - "boot-3.2.x"
   - "ai"
   - "spring-ai"
@@ -33,9 +33,9 @@ project-repositories:
   - "dall-e"
 - name: "spring-ai-output-parsers"
   description: "Using Spring AI prompt templates and output parsers"
-  url: "https://github.com/habuma/spring-ai-essential-examples?subPath=prompts-and-output-parsers"
+  url: "https://github.com/habuma/spring-ai-examples?subPath=prompts-and-output-parsers"
   tags:
-  - "java-17"
+  - "java-21"
   - "boot-3.2.x"
   - "ai"
   - "spring-ai"
@@ -45,7 +45,7 @@ project-repositories:
   description: "Spring AI with Retrieval Augmented Generation (RAG)"
   url: "https://github.com/habuma/spring-ai-rag-example"
   tags:
-  - "java-17"
+  - "java-21"
   - "boot-3.2.x"
   - "ai"
   - "spring-ai"
@@ -63,7 +63,7 @@ project-repositories:
   - "tts"
 - name: "spring-ai-sql"
   description: "Using Spring AI to ask questions to a database"
-  url: "https://github.com/habuma/spring-ai-essential-examples?subPath=spring-ai-sql"
+  url: "https://github.com/habuma/spring-ai-examples?subPath=spring-ai-sql"
   tags:
   - "java-21"
   - "boot-3.2.x"

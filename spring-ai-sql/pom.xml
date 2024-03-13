@@ -15,7 +15,7 @@
     <description>spring-ai-sql</description>
     <properties>
         <java.version>21</java.version>
-        <SPRING_AI_VERSION>0.8.0</SPRING_AI_VERSION>
+        <SPRING_AI_VERSION>0.8.1</SPRING_AI_VERSION>
     </properties>
     <dependencies>
         <dependency>
