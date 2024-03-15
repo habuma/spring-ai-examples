@@ -2,7 +2,7 @@
 
 This repository is where I'll commit various examples of using Spring AI.
 
-You can clone this project in its entirety and work with it like that. *Or* better, use the [SpringCLI](https://docs.spring.io/spring-boot/docs/current/reference/html/cli.html)
+You can clone this project in its entirety and work with it like that. *Or* better, use the [SpringCLI](https://docs.spring.io/spring-cli/reference/index.html)
 to select individual projects and create them locally.
 
 This repository includes a project-catalog.yml, so you can add it as a project
