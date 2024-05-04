@@ -22,9 +22,14 @@ Start the application with either Gradle...
 ./mvnw spring-boot:run
 ```
 
-Then copy documents (PDF, text, Excel, etc) into the `/etc/dropoff` directory
-to have them loaded into Chroma. Note that larger documents take more time to
-load, so watch the logs to know when the document has been completely loaded.
+Then copy documents (PDF, text, Excel, etc) into the `/tmp/dropoff` directory
+to have them loaded into Chroma. If that folder doesn't yet exist, it will be
+created for you, so long as filesystem permissions allow it. You can change
+the location by editing `src/main/resources/application.yml` and adjusting
+the `file.supplier.directory` property.
+
+Note that larger documents take more time to load, so watch the logs to know
+when the document has been completely loaded.
 
 ## Technical Details
 
