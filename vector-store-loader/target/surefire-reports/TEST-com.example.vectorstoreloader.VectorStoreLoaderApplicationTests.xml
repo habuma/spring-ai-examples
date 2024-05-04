@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.example.vectorstoreloader.VectorStoreLoaderApplicationTests" time="0.01" tests="1" errors="0" skipped="1" failures="0">
+  <properties/>
+  <testcase name="contextLoads" classname="com.example.vectorstoreloader.VectorStoreLoaderApplicationTests" time="0.0">
+    <skipped message="TODO: Ensure that container is running so that Chroma is available"/>
+  </testcase>
+</testsuite>

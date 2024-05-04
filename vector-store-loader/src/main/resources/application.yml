@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    function:
+      definition: fileSupplier|vectorStoreLoaderConsumer
+  ai:
+    openai:
+      api-key: "${OPENAI_API_KEY}"
+file:
+  supplier:
+    directory: /etc/dropoff
+server:
+  port: 0
