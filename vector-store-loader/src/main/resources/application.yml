@@ -7,6 +7,6 @@ spring:
       api-key: "${OPENAI_API_KEY}"
 file:
   supplier:
-    directory: /etc/dropoff
+    directory: /tmp/dropoff
 server:
   port: 0
