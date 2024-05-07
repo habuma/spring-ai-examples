@@ -1,12 +1,13 @@
 spring:
   cloud:
     function:
-      definition: fileSupplier|vectorStoreLoaderConsumer
+      definition: fileSupplier|documentReader|splitter|vectorStoreConsumer
   ai:
     openai:
       api-key: "${OPENAI_API_KEY}"
 file:
   supplier:
     directory: /tmp/dropoff
+    filename-regex: .*\.(pdf|docx|txt|pages)
 server:
   port: 0
