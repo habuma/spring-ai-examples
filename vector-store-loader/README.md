@@ -75,21 +75,34 @@ in `src/main/resources/application.yml` as follows:
 spring:
   cloud:
     function:
-      definition: fileSupplier|vectorStoreLoaderConsumer
+      definition: fileSupplier|documentReader|splitter|vectorStoreConsumer
 ```
 
 The `fileSupplier` function is provided by the Spring Function Catalog and
 is configured in `src/main/resources/application.yml` to watch for files to
 appear in the `/etc/dropoff` directory. When a file appears, the function
-reads the file and sends it to the `vectorStoreLoaderConsumer` function.
+reads the file and sends it to the `documentReader` function as a
+`Message<byte[]>` wrapped in a `Flux`.
 
-The `vectorStoreLoaderConsumer` function is defined in the `VectorStoreLoader`
-class. It receives a `Flux<Message<byte[]>>` from which it extracts the source
-filename from the message headers and the file content from the message body.
-Using Spring AI's `TikaDocumentLoader` to create a `Document` from the bytes,
-Spring AI's `TokenTextSplitter` to split the document into smaller documents,
-then loads the smaller documents into the `VectorStore` bean (which is, in fact,
-a `ChromaVectorStore`).
+The `documentReader` function takes the `Flux<Message<byte[]>>` it gets from
+`fileSupplier`, creates a `Resource` (via `ByteArrayResource`) that it then
+uses to create a `TikaDocumentReader`, which it uses to create a `List<Document>`
+that is returned in a new `Flux<List<Document>>`. Along the way, it also sets
+a "source" entry in the metadata containing the name of the source file, which
+it obtains from the `Message` headers.
+
+Next up, the `splitter` function splits the `Document` into one or more smaller
+document chunks so that the entire document won't need to be sent as context
+in a RAG-enabled Spring AI application. The new `List<Document>` is returned
+in a new `Flux`.
+
+Finally, the `vectorStoreConsumer` is just a simple wrapper around Spring AI's
+`VectorStore` (in this case a `ChromaVectorStore`) that extracts the
+`List<Document>` from the `Flux` via `doOnNext()` so that it can call the
+`accept()` method on the `VectorStore` to save the documents. The reason for
+doing this through `doOnNext()` is because up to this point, everything has
+been carried in a `Flux` (because that's what the `fileSupplier` emits), but
+`VectorStore` doesn't accept a `Flux` and only accepts a `List<Document>`.
 
 The function is kicked off by the `ApplicationRunner` bean, which looks up
 the composed function and calls its `run()` method. From that point, the
