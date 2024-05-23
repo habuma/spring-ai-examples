@@ -19,25 +19,31 @@ public class SqlController {
     @Value("classpath:/schema.sql")
     private Resource ddlResource;
 
-    private final PromptTemplate sqlPromptTemplate;
+    @Value("classpath:/sql-prompt-template.st")
+    private Resource sqlPromptTemplateResource;
 
     private final ChatClient aiClient;
     private final JdbcTemplate jdbcTemplate;
 
     public SqlController(
-            @Value("classpath:/sql-prompt-template.st") Resource sqlPromptTemplateResource,
             ChatClient aiClient,
             JdbcTemplate jdbcTemplate) {
         this.aiClient = aiClient;
         this.jdbcTemplate = jdbcTemplate;
-        this.sqlPromptTemplate = new PromptTemplate(sqlPromptTemplateResource);
     }
 
     @PostMapping(path="/sql")
     public Answer sql(@RequestBody SqlRequest sqlRequest) throws IOException {
         String schema = ddlResource.getContentAsString(Charset.defaultCharset());
-        Prompt prompt = sqlPromptTemplate.create(Map.of("question", sqlRequest.question(), "ddl", schema));
-        String query = aiClient.call(prompt).getResult().getOutput().getContent();
+
+        String query = aiClient.prompt()
+            .user(userSpec -> userSpec
+                .text(sqlPromptTemplateResource)
+                .param("question", sqlRequest.question())
+                .param("ddl", schema)
+                )
+            .call()
+            .content();
 
         if (query.toLowerCase().startsWith("select")) {
             return new Answer(query, jdbcTemplate.queryForList(query));
