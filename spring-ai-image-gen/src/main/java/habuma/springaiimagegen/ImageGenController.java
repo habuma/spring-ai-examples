@@ -1,6 +1,6 @@
 package habuma.springaiimagegen;
 
-import org.springframework.ai.image.ImageClient;
+import org.springframework.ai.image.ImageModel;
 import org.springframework.ai.image.ImageOptions;
 import org.springframework.ai.image.ImageOptionsBuilder;
 import org.springframework.ai.image.ImagePrompt;
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 @Controller
 public class ImageGenController {
 
-    private final ImageClient imageClient;
+    private final ImageModel imageModel;
 
-    public ImageGenController(ImageClient imageClient) {
-        this.imageClient = imageClient;
+    public ImageGenController(ImageModel imageModel) {
+        this.imageModel = imageModel;
     }
 
     @PostMapping("/imagegen")
@@ -25,7 +25,7 @@ public class ImageGenController {
                 .build();
 
         ImagePrompt imagePrompt = new ImagePrompt(request.prompt(), options);
-        ImageResponse response = imageClient.call(imagePrompt);
+        ImageResponse response = imageModel.call(imagePrompt);
         String imageUrl = response.getResult().getOutput().getUrl();
 
         return "redirect:" + imageUrl;
