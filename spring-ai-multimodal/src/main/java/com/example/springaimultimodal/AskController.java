@@ -27,15 +27,14 @@ public class AskController {
 
   @PostMapping("/ask")
   public Answer ask(@RequestBody Question question) throws Exception {
-    var media = new Media(
-        MimeTypeUtils.IMAGE_JPEG,
-        forecastImageResource.getContentAsByteArray());
+    var answer = chatClient.prompt()
+        .user(userSpec -> userSpec
+            .text(question.question())
+            .media(MimeTypeUtils.IMAGE_JPEG, forecastImageResource))
+        .call()
+        .content();
 
-    var userMessage = new UserMessage(question.question(), List.of(media));
-
-    var response = chatClient.call(new Prompt(List.of(userMessage)));
-
-    return new Answer(response.getResult().getOutput().getContent());
+    return new Answer(answer);
   }
 
 }
