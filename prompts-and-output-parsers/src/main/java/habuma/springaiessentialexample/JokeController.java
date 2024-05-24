@@ -1,6 +1,6 @@
 package habuma.springaiessentialexample;
 
-import org.springframework.ai.chat.ChatClient;
+import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,9 +13,9 @@ public class JokeController {
 
     private final ChatClient chatClient;
 
-    public JokeController(ChatClient chatClient,
+    public JokeController(ChatClient.Builder chatClientBuilder,
                           @Value("${app.promptTemplate}") String promptTemplate) {
-        this.chatClient = chatClient;
+        this.chatClient = chatClientBuilder.build();
         this.promptTemplate = promptTemplate;
     }
 

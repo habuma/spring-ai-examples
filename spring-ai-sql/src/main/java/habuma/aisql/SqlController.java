@@ -1,18 +1,15 @@
 package habuma.aisql;
 
-import org.springframework.ai.chat.ChatClient;
-import org.springframework.ai.chat.prompt.Prompt;
-import org.springframework.ai.chat.prompt.PromptTemplate;
+import java.io.IOException;
+import java.nio.charset.Charset;
+
+import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.util.Map;
 
 @RestController
 public class SqlController {
@@ -26,9 +23,9 @@ public class SqlController {
     private final JdbcTemplate jdbcTemplate;
 
     public SqlController(
-            ChatClient aiClient,
+            ChatClient.Builder aiClientBuilder,
             JdbcTemplate jdbcTemplate) {
-        this.aiClient = aiClient;
+        this.aiClient = aiClientBuilder.build();
         this.jdbcTemplate = jdbcTemplate;
     }
 

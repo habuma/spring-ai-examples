@@ -1,17 +1,12 @@
 package com.example.springaimultimodal;
 
-import org.springframework.ai.chat.ChatClient;
-import org.springframework.ai.chat.messages.Media;
-import org.springframework.ai.chat.messages.UserMessage;
-import org.springframework.ai.chat.prompt.Prompt;
+import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.util.MimeTypeUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 public class AskController {
@@ -21,8 +16,8 @@ public class AskController {
   @Value("classpath:/forecast.jpg")
   Resource forecastImageResource;
 
-  public AskController(ChatClient chatClient) {
-    this.chatClient = chatClient;
+  public AskController(ChatClient.Builder chatClientBuilder) {
+    this.chatClient = chatClientBuilder.build();
   }
 
   @PostMapping("/ask")
