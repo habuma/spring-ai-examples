@@ -5,7 +5,7 @@ project-repositories:
   url: "https://github.com/habuma/spring-ai-examples?subPath=spring-ai-functions"
   tags:
   - "java-21"
-  - "boot-3.2.x"
+  - "boot-3.3.x"
   - "ai"
   - "spring-ai"
   - "gemma"
@@ -15,7 +15,7 @@ project-repositories:
   url: "https://github.com/habuma/spring-ai-examples?subPath=spring-ai-gemma"
   tags:
   - "java-21"
-  - "boot-3.2.x"
+  - "boot-3.3.x"
   - "ai"
   - "spring-ai"
   - "functions"
@@ -25,7 +25,7 @@ project-repositories:
   url: "https://github.com/habuma/spring-ai-examples?subPath=spring-ai-image-gen"
   tags:
   - "java-21"
-  - "boot-3.2.x"
+  - "boot-3.3.x"
   - "ai"
   - "spring-ai"
   - "images"
@@ -36,7 +36,7 @@ project-repositories:
   url: "https://github.com/habuma/spring-ai-examples?subPath=spring-ai-multimodal"
   tags:
   - "java-21"
-  - "boot-3.2.x"
+  - "boot-3.3.x"
   - "ai"
   - "spring-ai"
   - "images"
@@ -48,11 +48,21 @@ project-repositories:
   url: "https://github.com/habuma/spring-ai-examples?subPath=prompts-and-output-parsers"
   tags:
   - "java-21"
-  - "boot-3.2.x"
+  - "boot-3.3.x"
   - "ai"
   - "spring-ai"
   - "output-parsers"
   - "prompt templates"
+- name: "spring-ai-qaadvisor"
+  description: "Using Spring AI QuestionAnswerAdvisor"
+  url: "https://github.com/habuma/spring-ai-examples?subPath=spring-ai-qaadvisor"
+  tags:
+  - "java-21"
+  - "boot-3.3.x"
+  - "ai"
+  - "spring-ai"
+  - "rag"
+  - "advisor"
 - name: "spring-ai-rag"
   description: "Spring AI with Retrieval Augmented Generation (RAG)"
   url: "https://github.com/habuma/spring-ai-rag-example"
@@ -78,7 +88,7 @@ project-repositories:
   url: "https://github.com/habuma/spring-ai-examples?subPath=spring-ai-sql"
   tags:
   - "java-21"
-  - "boot-3.2.x"
+  - "boot-3.3.x"
   - "ai"
   - "spring-ai"
   - "sql"
@@ -86,8 +96,8 @@ project-repositories:
   description: "Applying Spring Function Catalog to load a Chroma Vector Store"
   url: "https://github.com/habuma/spring-ai-examples?subPath=vector-store-loader"
   tags:
-  - "java-17"
-  - "boot-3.2.x"
+  - "java-21"
+  - "boot-3.3.x"
   - "ai"
   - "spring-ai"
   - "sql"
