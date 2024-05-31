@@ -1,5 +1,16 @@
 ---
 project-repositories:
+- name: "spring-ai-evaluators"
+  description: "Using Spring AI Evaluators (with QuestionAnswerAdvisor)"
+  url: "https://github.com/habuma/spring-ai-examples?subPath=spring-ai-evaluators"
+  tags:
+  - "java-21"
+  - "boot-3.3.x"
+  - "ai"
+  - "spring-ai"
+  - "evaluators"
+  - "rag"
+  - "advisor"
 - name: "spring-ai-functions"
   description: "Using Spring AI with OpenAI Functions"
   url: "https://github.com/habuma/spring-ai-examples?subPath=spring-ai-functions"
