@@ -1,4 +1,4 @@
-package com.example.springaievaluators;
+package com.example.springaiqaadvisor;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

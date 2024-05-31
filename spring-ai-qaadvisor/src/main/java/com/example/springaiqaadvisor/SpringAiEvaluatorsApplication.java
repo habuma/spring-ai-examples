@@ -1,4 +1,4 @@
-package com.example.springaievaluators;
+package com.example.springaiqaadvisor;
 
 import org.springframework.ai.document.Document;
 import org.springframework.ai.reader.tika.TikaDocumentReader;
@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.Resource;
 
 import java.util.List;
-import java.util.Vector;
 
 @SpringBootApplication
 public class SpringAiEvaluatorsApplication {

@@ -1,4 +1,4 @@
-package com.example.springaievaluators;
+package com.example.springaiqaadvisor;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.QuestionAnswerAdvisor;
