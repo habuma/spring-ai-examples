@@ -9,9 +9,9 @@ result from `GameRulesService` using Spring AI's `RelevancyEvaluator`. It
 also makes use of Spring AI's support for Testcontainers to fire up a Chroma
 database for use during the course of the test.
 
-The evaluator test is found in 
+The evaluator test is found in
 `src/test/java/com/example/springaievaluators/evaluator/EvaluatorTests.java`.
-To run the test with Maven, make sure you have Docker running and then use the 
+To run the test with Maven, make sure you have Docker running and then use the
 following command:
 
 ```bash
@@ -20,7 +20,10 @@ $ ./mvnw test
 
 The test should pass because the `GameRulesService` uses `QuestionAnswerAdvisor`
 created with a `VectorStore` that should be loaded rules for the game being
-asked about.
+asked about. That said, the evaluation is performed by the LLM and there is at
+least some small chance that the evaluation will fail (or possibly the answer
+coming back is bad). In my experience it worked almost every time, but it did
+fail once and then passed the very next time with no changes.
 
 Of course, because this is also a complete Spring AI application, you can also
 run the application and ask questions the same as for the spring-ai-qaadvisor
@@ -43,4 +46,3 @@ $ curl http://localhost:8080/ask \
   -H "Content-Type: application/json" \
   -d '{"question": "What is the Grave Digger card?"}'
 ```
-
