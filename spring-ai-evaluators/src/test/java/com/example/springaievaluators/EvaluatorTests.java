@@ -37,7 +37,7 @@ public class EvaluatorTests {
   void testEvaluation() {
     String question = "What is the grave digger card?";
     ChatResponse response = gameRulesService.askQuestion(question);
-
+    String responseContent = response.getResult().getOutput().getContent();
     var relevancyEvaluator = new RelevancyEvaluator(ChatClient.builder(chatModel));
 
     @SuppressWarnings("unchecked")
@@ -50,7 +50,9 @@ public class EvaluatorTests {
     EvaluationResponse evaluationResponse = relevancyEvaluator.evaluate(evaluationRequest);
 
     assertTrue(evaluationResponse.isPass(),
-        "Response is not relevant to the asked question");
+        "Response is not relevant to the asked question.\n" +
+            "Question: " + question + "\n" +
+            "Response: " + responseContent);
   }
 
 }
