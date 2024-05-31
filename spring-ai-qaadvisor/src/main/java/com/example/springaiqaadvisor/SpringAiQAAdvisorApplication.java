@@ -13,10 +13,10 @@ import org.springframework.core.io.Resource;
 import java.util.List;
 
 @SpringBootApplication
-public class SpringAiEvaluatorsApplication {
+public class SpringAiQAAdvisorApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(SpringAiEvaluatorsApplication.class, args);
+    SpringApplication.run(SpringAiQAAdvisorApplication.class, args);
   }
 
   @Value("classpath:/BurgerBattle-rules.pdf")
