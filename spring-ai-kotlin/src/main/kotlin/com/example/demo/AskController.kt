@@ -12,12 +12,11 @@ class AskController(chatClientBuilder: ChatClient.Builder) {
     private val chatClient = chatClientBuilder.build()
 
     @PostMapping("/ask")
-    fun ask(@RequestBody question: Question): Answer {
-        val answer = chatClient
+    fun ask(@RequestBody question: Question) = Answer (
+        chatClient
             .prompt()
             .user(question.question)
             .call()
             .content()
-        return Answer(answer)
-    }
+    )
 }
