@@ -3,6 +3,7 @@ package com.example.springaisummarizer;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.reader.tika.TikaDocumentReader;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,22 +16,13 @@ import java.util.stream.Collectors;
 @RestController
 public class SummaryController {
 
-  private static final String SUMMARY_SYSTEM = """
-      Summarize the content of the given text in the DOCUMENT entry.
-      Summarize each section of the document separately as well as
-      the entire document. The summary for each section should be no
-      longer than 2 paragraphs. The summary for the entire document
-      should be no longer than 1 paragraph.
-      
-      DOCUMENT:
-      {document}
-      """;
+  @Value("classpath:/summarize.st")
+  private Resource summarizeTemplate;
 
   private final ChatClient chatClient;
 
   public SummaryController(ChatClient.Builder chatClientBuilder) {
-    this.chatClient = chatClientBuilder
-        .build();
+    this.chatClient = chatClientBuilder.build();
   }
 
   @PostMapping(path="/summarize", produces = "text/plain")
@@ -43,7 +35,7 @@ public class SummaryController {
 
     return chatClient.prompt()
         .system(systemSpec -> systemSpec
-            .text(SUMMARY_SYSTEM)
+            .text(summarizeTemplate)
             .param("document", documentText))
         .call()
         .content();
