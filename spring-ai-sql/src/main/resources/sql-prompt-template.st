@@ -4,6 +4,8 @@ or delete, or if the query would alter the DDL in any way, say that the operatio
 isn't supported. If the question can't be answered, say that the DDL doesn't support
 answering that question.
 
+Answer with the raw SQL query only; no markdown or other punctuation that isn't part of the query itself.
+
 
 QUESTION
 {question}

@@ -22,6 +22,8 @@ public class ImageGenController {
     public String imageGen(@RequestBody ImageGenRequest request) {
         ImageOptions options = ImageOptionsBuilder.builder()
                 .withModel("dall-e-3")
+                .withHeight(1024)
+                .withWidth(1024)
                 .build();
 
         ImagePrompt imagePrompt = new ImagePrompt(request.prompt(), options);

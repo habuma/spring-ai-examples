@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.Resource;
 
 import java.util.List;
-import java.util.Vector;
 
 @SpringBootApplication
 public class SpringAiEvaluatorsApplication {

@@ -5,17 +5,17 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.0</version>
+        <version>3.2.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>habuma</groupId>
-    <artifactId>prompts-and-output-parsers</artifactId>
+    <groupId>com.example</groupId>
+    <artifactId>spring-ai-rag-example</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>prompts-and-output-parsers</name>
-    <description>prompts-and-output-parsers</description>
+    <name>spring-ai-rag-example</name>
+    <description>Example of doing RAG in Spring AI</description>
     <properties>
         <java.version>21</java.version>
-        <SPRING-AI-VERSION>1.0.0-M2</SPRING-AI-VERSION>
+        <SPRING_AI_VERSION>1.0.0-M2</SPRING_AI_VERSION>
     </properties>
     <dependencies>
         <dependency>
@@ -26,7 +26,13 @@
         <dependency>
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-openai-spring-boot-starter</artifactId>
-            <version>${SPRING-AI-VERSION}</version>
+            <version>${SPRING_AI_VERSION}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-tika-document-reader</artifactId>
+            <version>${SPRING_AI_VERSION}</version>
         </dependency>
 
         <dependency>
@@ -48,7 +54,7 @@
     <repositories>
         <repository>
             <id>spring-snapshot</id>
-            <name>Spring Milestone Repository</name>
+            <name>Spring Snapshot Repository</name>
             <url>https://repo.spring.io/milestone</url>
             <snapshots>
                 <enabled>false</enabled>

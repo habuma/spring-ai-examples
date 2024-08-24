@@ -5,6 +5,10 @@ spring:
   ai:
     openai:
       api-key: "${OPENAI_API_KEY}"
+    vectorstore:
+      chroma:
+        initialize-schema: true
+
 file:
   supplier:
     directory: /tmp/dropoff

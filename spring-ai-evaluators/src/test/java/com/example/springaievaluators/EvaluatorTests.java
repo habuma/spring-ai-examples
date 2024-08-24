@@ -27,6 +27,7 @@ public class EvaluatorTests {
   @Container
   @ServiceConnection
   static ChromaDBContainer chroma = new ChromaDBContainer("ghcr.io/chroma-core/chroma:0.4.15");
+
   @Autowired
   ChatModel chatModel;
 
@@ -44,8 +45,10 @@ public class EvaluatorTests {
     List<Content> responseDocuments =
         (List<Content>) response.getMetadata().get(QuestionAnswerAdvisor.RETRIEVED_DOCUMENTS);
 
-    EvaluationRequest evaluationRequest = new EvaluationRequest(question,
-        responseDocuments, response);
+    EvaluationRequest evaluationRequest = new EvaluationRequest(
+        question,
+        responseDocuments, 
+        responseContent);
 
     EvaluationResponse evaluationResponse = relevancyEvaluator.evaluate(evaluationRequest);
 

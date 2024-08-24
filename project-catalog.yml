@@ -96,7 +96,7 @@ project-repositories:
   - "advisor"
 - name: "spring-ai-rag"
   description: "Spring AI with Retrieval Augmented Generation (RAG)"
-  url: "https://github.com/habuma/spring-ai-rag-example"
+  url: "https://github.com/habuma/spring-ai-examples?subPath=spring-ai-rag-example"
   tags:
   - "java-21"
   - "boot-3.2.x"
