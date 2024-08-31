@@ -15,6 +15,12 @@ spring:
         initialize-schema: true
   application:
     name: spring-ai-rag-example
+  docker:
+    compose:
+
+      stop:
+        command: down
+        arguments: -v
 
 management:
   endpoints:
