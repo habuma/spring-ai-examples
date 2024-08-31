@@ -1,0 +1,32 @@
+### Set the resource path for the file to be processed
+### e.g., app.resource=file:///Users/yourname/Downloads/yourfile.pdf
+###    or app.resource=classpath:/data/myfile.pdf
+app:
+  resource: https://en.wikipedia.org/wiki/Chess
+spring:
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      chat:
+        options:
+          model: gpt-4o-mini
+    vectorstore:
+      chroma:
+        initialize-schema: true
+  application:
+    name: spring-ai-rag-example
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health
+          - metrics
+          - prometheus
+
+  ### Set sampling probability to 1.0 to enable tracing
+  ### on 100% of requests.
+  tracing:
+    sampling:
+      probability: 1.0
