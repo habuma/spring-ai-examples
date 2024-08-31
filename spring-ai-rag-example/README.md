@@ -25,6 +25,9 @@ it to something else. For example:
 app.resource=file:///Users/someuser/Spring_in_Action_SixthEdition.pdf
 ```
 
+By default, `app.resource` is set to load the contents of the Wikipedia page
+for the game of Chess.
+
 The resource URL can be a file, classpath, or even an HTTP URL. The file itself
 can be any document type supported by Apache Tika, including PDF, Word, HTML,
 and more.
@@ -46,7 +49,7 @@ the vector store (which is a Chroma database in this example).
 Then you can use `curl` to ask questions:
 
 ```
-$ curl localhost:8080/ask -H"Content-type: application/json" -d '{"question": "What annotation should I use to create a REST controller?"}'
+$ curl localhost:8080/ask -H"Content-type: application/json" -d '{"question": "What playing pieces are there?"}'
 ```
 
 > The question shown in the example was used to ask questions against my book,
@@ -56,7 +59,7 @@ You'll want to ask questions relevant to whatever document you're using.
 Or with HTTPie it's a little easier:
 
 ```
-http :8080/ask question="What annotation should I use to create a REST controller?"
+http :8080/ask question="What kind of moves can a knight make?"
 ```
 
 Observability and Tracing
