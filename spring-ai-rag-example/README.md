@@ -99,6 +99,8 @@ and choosing one of the metrics published by Spring AI, including:
 (See https://docs.spring.io/spring-ai/reference/1.0/observabilty/index.html for
 a full list of metrics published by Spring AI.)
 
+![Screenshot of Prometheus Dashboard](_images/prometheus.png "Prometheus and Spring AI Observability")
+
 ### Grafana
 
 To see the same metrics in Grafana, open http://localhost:3000 in your web
@@ -108,8 +110,12 @@ connection from the "Connections" menu item. The URL for Prometheus should be
 set to http://prometheus:9090 (e.g., the name of the container is the hostname).
 Then you can create a graph from any of the metrics published by Spring AI.
 
+![Screenshot of Grafana Dashboard](_images/grafana.png "Grafana and Spring AI Observability")
+
 ### Zipkin
 
 To view tracing open http://localhost:9411 in a web browser. Click on the "Run
 Query" button to see a list of all traces. Clicking the "Show" button on any of
 the traces will show the full trace details.
+
+![Screenshot of Zipkin Dashboard](_images/zipkin.png "Zipkin and Spring AI Tracing")
