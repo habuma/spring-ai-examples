@@ -13,11 +13,14 @@ spring:
     vectorstore:
       chroma:
         initialize-schema: true
+    chat:
+      observations:
+        include-prompt: true
+        include-completion: true
   application:
     name: spring-ai-rag-example
   docker:
     compose:
-
       stop:
         command: down
         arguments: -v

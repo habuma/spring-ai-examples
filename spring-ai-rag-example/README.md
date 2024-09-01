@@ -64,11 +64,13 @@ http :8080/ask question="What kind of moves can a knight make?"
 
 Observability and Tracing
 ---
-This project's Docker Compose file includes services to start Prometheus and
-Zipkin, in addition to the Chroma vector database. And the application's
-dependencies and configuration enable publication of metrics through the
-Actuator's `/actuator/prometheus` endpoint. It is also configured to sample
-100% of requests and to publish tracing to Zipkin.
+This project's Docker Compose file includes services to start Prometheus,
+Grafana, and Zipkin, in addition to the Chroma vector database. And the
+application's dependencies and configuration enable publication of metrics
+through the Actuator's `/actuator/prometheus` endpoint. It is also configured to
+sample 100% of requests and to publish tracing to Zipkin.
+
+### Prometheus
 
 After asking at least one question via the `/ask` endpoint, you can view
 metrics through Prometheus by opening http://localhost:9090 in a web browser
@@ -96,6 +98,17 @@ and choosing one of the metrics published by Spring AI, including:
 
 (See https://docs.spring.io/spring-ai/reference/1.0/observabilty/index.html for
 a full list of metrics published by Spring AI.)
+
+### Grafana
+
+To see the same metrics in Grafana, open http://localhost:3000 in your web
+browser. When prompted to login, use admin for both the username and passowrd.
+(You'll be asked to change the password.) Once logged in, create a new Prometheus
+connection from the "Connections" menu item. The URL for Prometheus should be
+set to http://prometheus:9090 (e.g., the name of the container is the hostname).
+Then you can create a graph from any of the metrics published by Spring AI.
+
+### Zipkin
 
 To view tracing open http://localhost:9411 in a web browser. Click on the "Run
 Query" button to see a list of all traces. Clicking the "Show" button on any of
