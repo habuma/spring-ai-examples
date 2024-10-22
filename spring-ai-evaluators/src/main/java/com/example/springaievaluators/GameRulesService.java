@@ -14,7 +14,7 @@ public class GameRulesService {
 
   public GameRulesService(ChatClient.Builder chatClientBuilder, VectorStore vectorStore) {
     this.chatClient = chatClientBuilder
-        .defaultAdvisors(new QuestionAnswerAdvisor(vectorStore, SearchRequest.defaults()))
+        .defaultAdvisors(new QuestionAnswerAdvisor(vectorStore))
         .build();
   }
   

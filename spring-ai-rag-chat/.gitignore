@@ -4,6 +4,8 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
+target/
+src/main/resources/2024-nfl-rulebook.pdf
 
 ### STS ###
 .apt_generated
