@@ -39,7 +39,7 @@ Or, if using HTTPie:
 
 ~~~
 % http -f POST localhost:8080/ask \
-  audio@'audio/question1.mp3;type=audio/mp3' > answer1.mp3
+  audio@'audiofiles/question1.mp3;type=audio/mp3' > answer1.mp3
 ~~~
 
 Open the MP3 files using your favorite audio player to hear the
