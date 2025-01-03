@@ -3,14 +3,37 @@ Spring AI MCP Server and Client
 
 This example shows how to create an MCP server and client with Spring AI.
 
-At the moment, the MCP server recreates the same calculator/weather example
-provided by the Spring AI itself. But the client goes a step further than
-the Spring AI-provided example by integrating the client with `ChatClient`
-so that you can ask questions that rely on the MCP server for answers.
+The MCP server exposes 3 tools that leverage the [Theme Park API](https://themeparks.wiki/api), including:
 
-(Note: I plan to rework the server at some point to do something different
-than what the Spring AI-provided example does. I just started with this to
-get something initial working.)
+ - **destinations** : Returns the JSON from the `/destinations` endpoint. There is
+ some initial effort to filter the JSON by a specific theme park, but that part
+ is unfinished at this time. This tool effectively makes it possible to lookup a
+ park's entity ID given its name.
+ - **entity-schedule** : Returns JSON from the `/entity/{entity ID}/schedule`
+ endpoint. Primarily used to retrieve operating hours for a park.
+ - **entity-live** : Returns JSON from the `/entity/{entity ID}/live` endpoint.
+ Can be used to retrieve wait times for an attraction.
+
+What's important to note is that nowhere in the server or client is there any
+code that instructs the LLM on when/if it should use one of those tools. The
+tools are just made available and the LLM can decide to use them as it sees
+fit when answering a question.
+
+For example, if you were to ask "What time does Epcot close today?" the prompt
+including that question as well as the tool definitions will be sent to the LLM.
+The LLM will likely decide first to invoke the "destinations" tool to lookup the
+entity ID for "Epcot" and then decide to invoke the "entity-schedule" tool to
+get the operating hours. But it's the LLM making those decisions, not the code
+of the server or client.
+
+I intend to flesh this out further, adding more tools and improving the tools
+that are there now. For instance:
+
+ - I plan to add caching to the "destinations" tool as it is generally
+ unnecessary to fetch that for every single question.
+ - I plan to filter the JSON from the "destinations" tool to focus on the
+ park or resort being asked about so that the entire JSON isn't sent in the
+ prompt.
 
 Running with the Stdio transport
 ---
@@ -34,16 +57,16 @@ $ cd mcp-client; ./gradlew bootRun
 
 Once the client has started, you can send POST requests to the /ask endpoint
 to ask questions that the server can help to answer. For example, using
-HTTPie, you can exercise the server's calculator tool:
+HTTPie, you ask questions like this:
 
 ```
-$ http :8080/ask question="What is 1.2 plus 3.4?"
+$ http :8080/ask question="What time does Epcot close today?"
 ```
 
-Or, to exercise the server's weather tool:
+Or, perhaps this:
 
 ```
-$ http :8080/ask question="What is the weather in Boston?"
+$ http :8080/ask question="What is the wait time for Indiana Jones in Disneyland?"
 ```
 
 Running with the SSE transport
@@ -65,14 +88,14 @@ $ cd mcp-client; ./gradlew bootRun --args='--spring.profiles.active=sseTransport
 
 Once the client has started, you can send POST requests to the /ask endpoint
 to ask questions that the server can help to answer. For example, using
-HTTPie, you can exercise the server's calculator tool:
+HTTPie, you ask questions like this:
 
 ```
-$ http :8080/ask question="What is 1.2 plus 3.4?"
+$ http :8080/ask question="What time does Epcot close today?"
 ```
 
-Or, to exercise the server's weather tool:
+Or, perhaps this:
 
 ```
-$ http :8080/ask question="What is the weather in Boston?"
+$ http :8080/ask question="What is the wait time for Indiana Jones in Disneyland?"
 ```
