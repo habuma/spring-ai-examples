@@ -10,6 +10,7 @@ import org.springframework.ai.mcp.spec.McpTransport;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.web.client.RestClient;
 import org.springframework.web.reactive.function.server.RouterFunction;
 
 import java.util.List;
@@ -44,165 +45,111 @@ public class McpConfig {
     private McpAsyncServer createMcpServer(McpTransport transport) {// @formatter:off
         // Configure server capabilities with resource support
         var capabilities = McpSchema.ServerCapabilities.builder()
-                .resources(false, true) // No subscribe support, but list changes notifications
                 .tools(true) // Tool support with list changes notifications
-                .prompts(true) // Prompt support with list changes notifications
                 .build();
 
         // Create the server with both tool and resource capabilities
         return McpServer.using(transport)
                 .info("MCP Demo Server", "1.0.0")
                 .capabilities(capabilities)
-                .resources(systemInfoResourceRegistration())
-                .prompts(greetingPromptRegistration())
-                .tools(weatherToolRegistration(), calculatorToolRegistration())
+                .tools(
+                        themeParkApiDestinationToolRegistration(),
+                        themeParkApiEntityScheduleToolRegistration(),
+                        themeParkApiEntityLiveToolRegistration())
                 .async();
     } // @formatter:on
 
     // ===================================================================================
 
     //
-    // Resource Registration
+    // Theme Park API Destination Tool Registration
     //
-    private static McpServer.ResourceRegistration systemInfoResourceRegistration() {
-
-        // Create a resource registration for system information
-        var systemInfoResource = new McpSchema.Resource( // @formatter:off
-                "system://info",
-                "System Information",
-                "Provides basic system information including Java version, OS, etc.",
-                "application/json", null
-        );
-
-        var resourceRegistration = new McpServer.ResourceRegistration(systemInfoResource, (request) -> {
-            try {
-                var systemInfo = Map.of(
-                        "javaVersion", System.getProperty("java.version"),
-                        "osName", System.getProperty("os.name"),
-                        "osVersion", System.getProperty("os.version"),
-                        "osArch", System.getProperty("os.arch"),
-                        "processors", Runtime.getRuntime().availableProcessors(),
-                        "timestamp", System.currentTimeMillis());
-
-                String jsonContent = new ObjectMapper().writeValueAsString(systemInfo);
-
-                return new McpSchema.ReadResourceResult(
-                        List.of(new McpSchema.TextResourceContents(request.uri(), "application/json", jsonContent)));
-            }
-            catch (Exception e) {
-                throw new RuntimeException("Failed to generate system info", e);
-            }
-        }); // @formatter:on
-
-        return resourceRegistration;
-    }
-
-    //
-    // Prompt Registration
-    //
-    private static McpServer.PromptRegistration greetingPromptRegistration() {
-
-        var prompt = new McpSchema.Prompt("greeting", "A friendly greeting prompt",
-                List.of(new McpSchema.PromptArgument("name", "The name to greet", true)));
-
-        return new McpServer.PromptRegistration(prompt, getPromptRequest -> {
-
-            String nameArgument = (String) getPromptRequest.arguments().get("name");
-            if (nameArgument == null) {
-                nameArgument = "friend";
-            }
-
-            var userMessage = new McpSchema.PromptMessage(McpSchema.Role.USER,
-                    new McpSchema.TextContent("Hello " + nameArgument + "! How can I assist you today?"));
-
-            return new McpSchema.GetPromptResult("A personalized greeting message", List.of(userMessage));
-        });
-    }
-
-    //
-    // Weather Tool Registration
-    //
-    private static McpServer.ToolRegistration weatherToolRegistration() {
+    private static McpServer.ToolRegistration themeParkApiDestinationToolRegistration() {
         return new McpServer.ToolRegistration(
-                new McpSchema.Tool("weather", "Weather forecast tool by location",
-//                        Map.of("city", "String")
-        """
-        {
-            "type": "object",
-            "properties": {
-                "city": {
-                    "type": "string",
-                    "description": "The city to get the weather for"
-                }
-            },
-            "required": ["city"]
-        }
-        """
-                ),
+                new McpSchema.Tool("destinations", "Get a list of destinations including resorts and their respective theme parks. Each entry also includes the resort's or park's entity ID.",
+                        """
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "resort": {
+                                            "type": "string",
+                                            "description": "Filter results by resort name"
+                                        }
+                                    },
+                                    "required": []
+                                }
+                                """),
                 (arguments) -> {
-                    String city = (String) arguments.get("city");
-                    McpSchema.TextContent content = new McpSchema.TextContent("Weather forecast for " + city + " is sunny");
+                    var restClient = RestClient.builder().baseUrl("https://api.themeparks.wiki/v1").build();
+                    var jsonResponse = restClient.get()
+                                    .uri("/destinations")
+                                    .retrieve()
+                                    .body(String.class);
+                    McpSchema.TextContent content = new McpSchema.TextContent(jsonResponse);
                     return new McpSchema.CallToolResult(List.of(content), false);
                 });
     }
 
     //
-    // Calculator Tool Registration
+    // Theme Park API Entity Schedule Tool Registration
     //
-    private static McpServer.ToolRegistration calculatorToolRegistration() {
-        return new McpServer.ToolRegistration(new McpSchema.Tool("calculator",
-                "Performs basic arithmetic operations (add, subtract, multiply, divide)", """
-						{
-							"type": "object",
-							"properties": {
-								"operation": {
-									"type": "string",
-									"enum": ["add", "subtract", "multiply", "divide"],
-									"description": "The arithmetic operation to perform"
-								},
-								"a": {
-									"type": "number",
-									"description": "First operand"
-								},
-								"b": {
-									"type": "number",
-									"description": "Second operand"
-								}
-							},
-							"required": ["operation", "a", "b"]
-						}
-						"""), arguments -> {
-            String operation = (String) arguments.get("operation");
-            double a = (Double) arguments.get("a");
-            double b = (Double) arguments.get("b");
+    private static McpServer.ToolRegistration themeParkApiEntityScheduleToolRegistration() {
+        return new McpServer.ToolRegistration(
+                new McpSchema.Tool("entity-schedule", "Return schedule data about an entity, including hours of operation",
+                        """
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "entityId": {
+                                            "type": "string",
+                                            "description": "Entity ID"
+                                        }
+                                    },
+                                    "required": ["entityId"]
+                                }
+                                """),
+                (arguments) -> {
+                    String entityId = (String) arguments.get("entityId");
 
-            double result;
-            switch (operation) {
-                case "add":
-                    result = a + b;
-                    break;
-                case "subtract":
-                    result = a - b;
-                    break;
-                case "multiply":
-                    result = a * b;
-                    break;
-                case "divide":
-                    if (b == 0) {
-                        return new McpSchema.CallToolResult(
-                                java.util.List.of(new McpSchema.TextContent("Division by zero")), true);
-                    }
-                    result = a / b;
-                    break;
-                default:
-                    return new McpSchema.CallToolResult(
-                            java.util.List.of(new McpSchema.TextContent("Unknown operation: " + operation)),
-                            true);
-            }
+                    var restClient = RestClient.builder().baseUrl("https://api.themeparks.wiki/v1").build();
+                    var jsonResponse = restClient.get()
+                            .uri("/entity/{entityId}/schedule", entityId)
+                            .retrieve()
+                            .body(String.class);
+                    McpSchema.TextContent content = new McpSchema.TextContent(jsonResponse);
+                    return new McpSchema.CallToolResult(List.of(content), false);
+                });
+    }
 
-            return new McpSchema.CallToolResult(
-                    java.util.List.of(new McpSchema.TextContent(String.valueOf(result))), false);
-        });
+    //
+    // Theme Park API Entity Live Tool Registration
+    //
+    private static McpServer.ToolRegistration themeParkApiEntityLiveToolRegistration() {
+        return new McpServer.ToolRegistration(
+                new McpSchema.Tool("entity-live", "Return live data about attractions and shows, including show times and attraction wait times",
+                        """
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "entityId": {
+                                            "type": "string",
+                                            "description": "Entity ID"
+                                        }
+                                    },
+                                    "required": ["entityId"]
+                                }
+                                """),
+                (arguments) -> {
+                    String entityId = (String) arguments.get("entityId");
+
+                    var restClient = RestClient.builder().baseUrl("https://api.themeparks.wiki/v1").build();
+                    var jsonResponse = restClient.get()
+                            .uri("/entity/{entityId}/live", entityId)
+                            .retrieve()
+                            .body(String.class);
+                    McpSchema.TextContent content = new McpSchema.TextContent(jsonResponse);
+                    return new McpSchema.CallToolResult(List.of(content), false);
+                });
     }
 
 }
