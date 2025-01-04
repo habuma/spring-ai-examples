@@ -7,17 +7,19 @@ import org.springframework.ai.mcp.server.transport.SseServerTransport;
 import org.springframework.ai.mcp.server.transport.StdioServerTransport;
 import org.springframework.ai.mcp.spec.McpSchema;
 import org.springframework.ai.mcp.spec.McpTransport;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import org.springframework.web.client.RestClient;
 import org.springframework.web.reactive.function.server.RouterFunction;
 
 import java.util.List;
-import java.util.Map;
 
 @Configuration
 public class McpConfig {
+
+    @Autowired
+    ThemeParkService themeParkService;
 
     @Bean
     @Profile("!sseTransport")
@@ -64,7 +66,7 @@ public class McpConfig {
     //
     // Theme Park API Destination Tool Registration
     //
-    private static McpServer.ToolRegistration themeParkApiDestinationToolRegistration() {
+    private McpServer.ToolRegistration themeParkApiDestinationToolRegistration() {
         return new McpServer.ToolRegistration(
                 new McpSchema.Tool("destinations", "Get a list of destinations including resorts and their respective theme parks. Each entry also includes the resort's or park's entity ID.",
                         """
@@ -80,12 +82,8 @@ public class McpConfig {
                                 }
                                 """),
                 (arguments) -> {
-                    var restClient = RestClient.builder().baseUrl("https://api.themeparks.wiki/v1").build();
-                    var jsonResponse = restClient.get()
-                                    .uri("/destinations")
-                                    .retrieve()
-                                    .body(String.class);
-                    McpSchema.TextContent content = new McpSchema.TextContent(jsonResponse);
+                    var destinationsJson = themeParkService.getDestinations();
+                    McpSchema.TextContent content = new McpSchema.TextContent(destinationsJson);
                     return new McpSchema.CallToolResult(List.of(content), false);
                 });
     }
@@ -93,7 +91,7 @@ public class McpConfig {
     //
     // Theme Park API Entity Schedule Tool Registration
     //
-    private static McpServer.ToolRegistration themeParkApiEntityScheduleToolRegistration() {
+    private McpServer.ToolRegistration themeParkApiEntityScheduleToolRegistration() {
         return new McpServer.ToolRegistration(
                 new McpSchema.Tool("entity-schedule", "Return schedule data about an entity, including hours of operation",
                         """
@@ -110,13 +108,8 @@ public class McpConfig {
                                 """),
                 (arguments) -> {
                     String entityId = (String) arguments.get("entityId");
-
-                    var restClient = RestClient.builder().baseUrl("https://api.themeparks.wiki/v1").build();
-                    var jsonResponse = restClient.get()
-                            .uri("/entity/{entityId}/schedule", entityId)
-                            .retrieve()
-                            .body(String.class);
-                    McpSchema.TextContent content = new McpSchema.TextContent(jsonResponse);
+                    var entityScheduleJson = themeParkService.getEntitySchedule(entityId);
+                    McpSchema.TextContent content = new McpSchema.TextContent(entityScheduleJson);
                     return new McpSchema.CallToolResult(List.of(content), false);
                 });
     }
@@ -124,7 +117,7 @@ public class McpConfig {
     //
     // Theme Park API Entity Live Tool Registration
     //
-    private static McpServer.ToolRegistration themeParkApiEntityLiveToolRegistration() {
+    private McpServer.ToolRegistration themeParkApiEntityLiveToolRegistration() {
         return new McpServer.ToolRegistration(
                 new McpSchema.Tool("entity-live", "Return live data about attractions and shows, including show times and attraction wait times",
                         """
@@ -141,13 +134,8 @@ public class McpConfig {
                                 """),
                 (arguments) -> {
                     String entityId = (String) arguments.get("entityId");
-
-                    var restClient = RestClient.builder().baseUrl("https://api.themeparks.wiki/v1").build();
-                    var jsonResponse = restClient.get()
-                            .uri("/entity/{entityId}/live", entityId)
-                            .retrieve()
-                            .body(String.class);
-                    McpSchema.TextContent content = new McpSchema.TextContent(jsonResponse);
+                    var entityScheduleJson = themeParkService.getEntitySchedule(entityId);
+                    McpSchema.TextContent content = new McpSchema.TextContent(entityScheduleJson);
                     return new McpSchema.CallToolResult(List.of(content), false);
                 });
     }
