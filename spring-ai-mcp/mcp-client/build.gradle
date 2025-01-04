@@ -25,8 +25,8 @@ ext {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.ai:spring-ai-openai-spring-boot-starter'
-    implementation 'org.springframework.experimental:mcp:0.3.0'
-    implementation 'org.springframework.experimental:spring-ai-mcp:0.3.0'
+    implementation 'org.springframework.experimental:mcp:0.3.1'
+    implementation 'org.springframework.experimental:spring-ai-mcp:0.3.1'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'

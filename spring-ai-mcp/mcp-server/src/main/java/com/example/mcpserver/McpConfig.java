@@ -18,6 +18,19 @@ import java.util.List;
 @Configuration
 public class McpConfig {
 
+    private static final String COMMON_INPUT_SCHEMA = """
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "entityId": {
+                                            "type": "string",
+                                            "description": "Entity ID"
+                                        }
+                                    },
+                                    "required": ["entityId"]
+                                }
+                                """;
+
     @Autowired
     ThemeParkService themeParkService;
 
@@ -55,35 +68,25 @@ public class McpConfig {
                 .info("MCP Demo Server", "1.0.0")
                 .capabilities(capabilities)
                 .tools(
-                        themeParkApiDestinationToolRegistration(),
+                        themeParkApiParksToolRegistration(),
                         themeParkApiEntityScheduleToolRegistration(),
                         themeParkApiEntityLiveToolRegistration())
                 .async();
     } // @formatter:on
 
     // ===================================================================================
-
     //
     // Theme Park API Destination Tool Registration
     //
-    private McpServer.ToolRegistration themeParkApiDestinationToolRegistration() {
+    private McpServer.ToolRegistration themeParkApiParksToolRegistration() {
         return new McpServer.ToolRegistration(
-                new McpSchema.Tool("destinations", "Get a list of destinations including resorts and their respective theme parks. Each entry also includes the resort's or park's entity ID.",
-                        """
-                                {
-                                    "type": "object",
-                                    "properties": {
-                                        "resort": {
-                                            "type": "string",
-                                            "description": "Filter results by resort name"
-                                        }
-                                    },
-                                    "required": []
-                                }
-                                """),
+                new McpSchema.Tool(
+                        "parks",
+                        "Get a list of all parks, including their respective resorts and entity IDs",
+                        "{}"),
                 (arguments) -> {
-                    var destinationsJson = themeParkService.getDestinations();
-                    McpSchema.TextContent content = new McpSchema.TextContent(destinationsJson);
+                    var parksJson = themeParkService.getParks();
+                    McpSchema.TextContent content = new McpSchema.TextContent(parksJson);
                     return new McpSchema.CallToolResult(List.of(content), false);
                 });
     }
@@ -93,19 +96,10 @@ public class McpConfig {
     //
     private McpServer.ToolRegistration themeParkApiEntityScheduleToolRegistration() {
         return new McpServer.ToolRegistration(
-                new McpSchema.Tool("entity-schedule", "Return schedule data about an entity, including hours of operation",
-                        """
-                                {
-                                    "type": "object",
-                                    "properties": {
-                                        "entityId": {
-                                            "type": "string",
-                                            "description": "Entity ID"
-                                        }
-                                    },
-                                    "required": ["entityId"]
-                                }
-                                """),
+                new McpSchema.Tool(
+                        "entity-schedule",
+                        "Return schedule data about an entity, including hours of operation",
+                        COMMON_INPUT_SCHEMA),
                 (arguments) -> {
                     String entityId = (String) arguments.get("entityId");
                     var entityScheduleJson = themeParkService.getEntitySchedule(entityId);
@@ -119,23 +113,31 @@ public class McpConfig {
     //
     private McpServer.ToolRegistration themeParkApiEntityLiveToolRegistration() {
         return new McpServer.ToolRegistration(
-                new McpSchema.Tool("entity-live", "Return live data about attractions and shows, including show times and attraction wait times",
-                        """
-                                {
-                                    "type": "object",
-                                    "properties": {
-                                        "entityId": {
-                                            "type": "string",
-                                            "description": "Entity ID"
-                                        }
-                                    },
-                                    "required": ["entityId"]
-                                }
-                                """),
+                new McpSchema.Tool(
+                        "entity-live",
+                        "Return live data about attractions and shows, including show times and attraction wait times",
+                        COMMON_INPUT_SCHEMA),
                 (arguments) -> {
                     String entityId = (String) arguments.get("entityId");
-                    var entityScheduleJson = themeParkService.getEntitySchedule(entityId);
+                    var entityScheduleJson = themeParkService.getEntityLive(entityId);
                     McpSchema.TextContent content = new McpSchema.TextContent(entityScheduleJson);
+                    return new McpSchema.CallToolResult(List.of(content), false);
+                });
+    }
+
+    //
+    // Theme Park API Entity Children Tool Registration
+    //
+    private McpServer.ToolRegistration themeParkApiEntityChildrenToolRegistration() {
+        return new McpServer.ToolRegistration(
+                new McpSchema.Tool(
+                        "entity-children",
+                        "Get the entity IDs of the children of a specified entity. This is useful for getting the entity IDs of attractions within a theme park",
+                        COMMON_INPUT_SCHEMA),
+                (arguments) -> {
+                    String entityId = (String) arguments.get("entityId");
+                    var entityChildrenJson = themeParkService.getEntityChildren(entityId);
+                    McpSchema.TextContent content = new McpSchema.TextContent(entityChildrenJson);
                     return new McpSchema.CallToolResult(List.of(content), false);
                 });
     }
