@@ -6,7 +6,7 @@ import org.springframework.ai.mcp.server.McpServer;
 import org.springframework.ai.mcp.server.transport.SseServerTransport;
 import org.springframework.ai.mcp.server.transport.StdioServerTransport;
 import org.springframework.ai.mcp.spec.McpSchema;
-import org.springframework.ai.mcp.spec.McpTransport;
+import org.springframework.ai.mcp.spec.ServerMcpTransport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -53,11 +53,11 @@ public class McpConfig {
     }
 
     @Bean
-    public McpAsyncServer sseMcpServer(McpTransport transport) {
+    public McpAsyncServer sseMcpServer(ServerMcpTransport transport) {
         return createMcpServer(transport);
     }
 
-    private McpAsyncServer createMcpServer(McpTransport transport) {// @formatter:off
+    private McpAsyncServer createMcpServer(ServerMcpTransport transport) {// @formatter:off
         // Configure server capabilities with resource support
         var capabilities = McpSchema.ServerCapabilities.builder()
                 .tools(true) // Tool support with list changes notifications
@@ -65,7 +65,7 @@ public class McpConfig {
 
         // Create the server with both tool and resource capabilities
         return McpServer.using(transport)
-                .info("MCP Demo Server", "1.0.0")
+                .serverInfo("MCP Demo Server", "1.0.0")
                 .capabilities(capabilities)
                 .tools(
                         themeParkApiParksToolRegistration(),

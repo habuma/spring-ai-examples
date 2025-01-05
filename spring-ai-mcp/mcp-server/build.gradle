@@ -23,8 +23,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation 'org.springframework.boot:spring-boot-starter-cache'
 
-    implementation 'org.springframework.experimental:mcp:0.3.1'
-    implementation 'org.springframework.experimental:spring-ai-mcp:0.3.1'
+    implementation 'org.springframework.experimental:mcp:0.4.1'
+    implementation 'org.springframework.experimental:spring-ai-mcp:0.4.1'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'

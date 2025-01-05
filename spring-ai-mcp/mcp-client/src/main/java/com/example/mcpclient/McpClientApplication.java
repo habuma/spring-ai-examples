@@ -5,7 +5,7 @@ import org.springframework.ai.mcp.client.McpSyncClient;
 import org.springframework.ai.mcp.client.transport.ServerParameters;
 import org.springframework.ai.mcp.client.transport.SseClientTransport;
 import org.springframework.ai.mcp.client.transport.StdioClientTransport;
-import org.springframework.ai.mcp.spec.McpTransport;
+import org.springframework.ai.mcp.spec.ClientMcpTransport;
 import org.springframework.ai.mcp.spring.McpFunctionCallback;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,21 +21,21 @@ public class McpClientApplication {
     }
 
     @Bean(initMethod = "initialize", destroyMethod = "close")
-    public McpSyncClient mcpClient(McpTransport transport) {
+    public McpSyncClient mcpClient(ClientMcpTransport transport) {
         return McpClient.using(transport).sync();
     }
 
-    @Bean
+//    @Bean
     @Profile("!sseTransport")
-    McpTransport stdioTransport() {
+    ClientMcpTransport stdioTransport() {
         return new StdioClientTransport(ServerParameters.builder("java")
                 .args("-jar", "../mcp-server/build/libs/mcp-server-0.0.1-SNAPSHOT.jar")
                 .build());
     }
 
-//    @Bean
-    @Profile("sseTransport")
-    McpTransport sseTransport() {
+    @Bean
+//    @Profile("sseTransport")
+    ClientMcpTransport sseTransport() {
         return new SseClientTransport(WebClient.builder()
                 .baseUrl("http://localhost:9090"));
     }

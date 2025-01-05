@@ -1,9 +1,6 @@
 package com.example.mcpserver;
 
-import com.example.mcpserver.domain.Destination;
-import com.example.mcpserver.domain.DestinationPark;
-import com.example.mcpserver.domain.Destinations;
-import com.example.mcpserver.domain.Park;
+import com.example.mcpserver.domain.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -16,9 +13,11 @@ import java.util.List;
 public class DefaultThemeParkService implements ThemeParkService {
 
     private final RestClient restClient;
+    private final ObjectMapper objectMapper;
 
     public DefaultThemeParkService(RestClient.Builder restClientBuilder) {
         this.restClient = restClientBuilder.baseUrl("https://api.themeparks.wiki/v1").build();
+        this.objectMapper = new ObjectMapper();
     }
 
     @Cacheable("parks")
@@ -37,14 +36,13 @@ public class DefaultThemeParkService implements ThemeParkService {
             }
         });
 
-        ObjectMapper om = new ObjectMapper();
         try {
-            return om.writeValueAsString(parks);
+            return objectMapper.writeValueAsString(parks);
         } catch(Exception e) {
             return "[]";
         }
     }
-    
+
     @Override
     public String getEntitySchedule(String entityId) {
         return restClient
@@ -56,11 +54,17 @@ public class DefaultThemeParkService implements ThemeParkService {
 
     @Override
     public String getEntityLive(String entityId) {
-        return restClient
+        var liveEntity = restClient
                 .get()
                 .uri("/entity/{entityId}/live", entityId)
                 .retrieve()
-                .body(String.class);
+                .body(LiveEntity.class);
+
+        try {
+            return objectMapper.writeValueAsString(liveEntity);
+        } catch(Exception e) {
+            return "{}";
+        }
     }
 
     @Override
