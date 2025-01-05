@@ -25,17 +25,17 @@ public class McpClientApplication {
         return McpClient.using(transport).sync();
     }
 
-//    @Bean
+    @Bean
     @Profile("!sseTransport")
-    ClientMcpTransport stdioTransport() {
+    public ClientMcpTransport stdioTransport() {
         return new StdioClientTransport(ServerParameters.builder("java")
                 .args("-jar", "../mcp-server/build/libs/mcp-server-0.0.1-SNAPSHOT.jar")
                 .build());
     }
 
     @Bean
-//    @Profile("sseTransport")
-    ClientMcpTransport sseTransport() {
+    @Profile("sseTransport")
+    public ClientMcpTransport sseTransport() {
         return new SseClientTransport(WebClient.builder()
                 .baseUrl("http://localhost:9090"));
     }
