@@ -21,7 +21,6 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
-    implementation 'org.springframework.boot:spring-boot-starter-cache'
 
     implementation 'org.springframework.experimental:mcp:0.4.2'
     implementation 'org.springframework.experimental:spring-ai-mcp:0.4.2'

@@ -2,7 +2,6 @@ package com.example.mcpserver;
 
 import com.example.mcpserver.domain.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
@@ -20,13 +19,14 @@ public class DefaultThemeParkService implements ThemeParkService {
         this.objectMapper = new ObjectMapper();
     }
 
-    @Cacheable("parks")
     public String getParks() {
         var destinations = restClient
                 .get()
                 .uri("/destinations")
                 .retrieve()
                 .body(Destinations.class);
+
+        System.err.println("***** GETTING PARKS");
 
         List<Destination> destinationsList = List.of(destinations.destinations());
         List<Park> parks = new ArrayList<>();
