@@ -19,14 +19,14 @@ repositories {
 }
 
 ext {
-    set('springAiVersion', "1.0.0-M4")
+    set('springAiVersion', "1.0.0-M5")
 }
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.ai:spring-ai-openai-spring-boot-starter'
-    implementation 'org.springframework.experimental:mcp:0.4.1'
-    implementation 'org.springframework.experimental:spring-ai-mcp:0.4.1'
+    implementation 'org.springframework.experimental:mcp:0.4.2'
+    implementation 'org.springframework.experimental:spring-ai-mcp:0.4.2'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'

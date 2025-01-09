@@ -6,12 +6,15 @@ import org.springframework.ai.mcp.client.transport.ServerParameters;
 import org.springframework.ai.mcp.client.transport.SseClientTransport;
 import org.springframework.ai.mcp.client.transport.StdioClientTransport;
 import org.springframework.ai.mcp.spec.ClientMcpTransport;
+import org.springframework.ai.mcp.spec.McpSchema;
 import org.springframework.ai.mcp.spring.McpFunctionCallback;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 import org.springframework.web.reactive.function.client.WebClient;
+
+import java.util.Map;
 
 @SpringBootApplication
 public class McpClientApplication {
