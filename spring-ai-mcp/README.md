@@ -49,6 +49,9 @@ Again, the client application will run the server, so there's no need for
 you to run the server yourself. Just build it to make sure that the JAR is
 in place for the client to find.
 
+Before you run the client, make sure that you have set the `OPENAI_API_KEY`
+environment variable with an API key obtained from https://platform.openai.com.
+
 Next, run the client:
 
 ```
