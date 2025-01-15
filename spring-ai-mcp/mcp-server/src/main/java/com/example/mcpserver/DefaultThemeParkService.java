@@ -25,7 +25,7 @@ public class DefaultThemeParkService implements ThemeParkService {
                 .uri("/destinations")
                 .retrieve()
                 .body(Destinations.class);
-        
+
         List<Destination> destinationsList = List.of(destinations.destinations());
         List<Park> parks = new ArrayList<>();
         destinationsList.forEach(destination -> {

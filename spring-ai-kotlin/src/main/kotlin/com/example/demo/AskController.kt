@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 
 data class Question(val question: String)
-data class Answer(val answer: String)
+data class Answer(val answer: String?)
 
 @RestController
 class AskController(chatClientBuilder: ChatClient.Builder) {

@@ -26,8 +26,8 @@ public class AskController {
     public AskController(ChatClient.Builder chatClientBuilder) {
         this.chatClient = chatClientBuilder
                 .defaultOptions(OpenAiChatOptions.builder()
-                        .withOutputModalities(List.of("text", "audio"))
-                        .withOutputAudio(new AudioParameters(Voice.ALLOY, AudioResponseFormat.MP3))
+                        .outputModalities(List.of("text", "audio"))
+                        .outputAudio(new AudioParameters(Voice.ALLOY, AudioResponseFormat.MP3))
                         .build())
                 .build();
     }

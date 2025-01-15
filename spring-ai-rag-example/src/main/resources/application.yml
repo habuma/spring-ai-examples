@@ -11,7 +11,7 @@ spring:
         options:
           model: gpt-4o-mini
     vectorstore:
-      chroma:
+      qdrant:
         initialize-schema: true
     chat:
       observations:

@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 
 @Configuration
-class AiConfig(@Value("classpath:/BurgerBattle-rules.pdf") val rules: Resource) {
+class AiConfig(@Value("classpath:/BurgerBattle-rules.txt") val rules: Resource) {
     @Bean
     fun go(vectorStore: VectorStore): ApplicationRunner {
         return ApplicationRunner {

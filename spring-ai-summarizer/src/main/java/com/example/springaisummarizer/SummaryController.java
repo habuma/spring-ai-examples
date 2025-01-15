@@ -30,10 +30,11 @@ public class SummaryController {
     Resource resource = file.getResource();
     List<Document> documents = new TikaDocumentReader(resource).get();
     String documentText = documents.stream()
-        .map(Document::getContent)
+        .map(Document::getFormattedContent)
         .collect(Collectors.joining("\n\n"));
 
     return chatClient.prompt()
+        .user("Summarize the text")
         .system(systemSpec -> systemSpec
             .text(summarizeTemplate)
             .param("document", documentText))

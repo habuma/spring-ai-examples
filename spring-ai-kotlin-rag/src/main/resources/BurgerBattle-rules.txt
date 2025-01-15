@@ -1,0 +1,96 @@
+= How to Play Burger Battle
+
+How many players: 2-6 PLAYERS
+Time to play: 15-45 MINUTES
+Age range: FOR AGES 14+
+
+== GOAL
+
+Win the battle by being the first player to collect all of your Burger's ingredients.
+
+== SET UP
+
+STEP 1: Shuffle the 8 large Burger cards and deal one to each player. Each player will leave their Burger face up in front of them.
+STEP 2: Shuffle the deck thoroughly and deal 5cards to each player. Each player will hold their 5 cards where only they can see them.
+STEP 3: Place the remaining deck face down in the center of the table. Flip the top card over to the side; this will act as the Graveyard.
+STEP 4: Should the game continue once the deck is depleted, take the Graveyard, reshuffle and repeat step 3.
+
+== YOUR CARDS
+
+This is an example of how your cards should look during game play. When played, all cards on the table must be placed where they are easily read by other players.
+
+Burger cards are oversized and have a red background with the burger's name and a list of eight ingredients needed to complete the burger.
+
+Battle cards are cards with an orange background. These are the cards you'll use during battle to either protect your burger or to hinder your opponents' progress in building their burger.
+
+Ingredient cards are cards with a blue background. These are the ingredients you'll collect to build your burger. Some ingredients are only useful for a specific burger.
+
+== YOUR TURN
+
+* The player who has eaten a Burger most recently goes first.
+* To start your turn, draw a card. Cards can be drawn from the deck or an ingredient can be taken from the top of the Graveyard.Once you draw a card, you will have 6cards in your hand.
+* Do you have an ingredient for your Burger in your hand? If so, you can play that ingredient and draw another card. Repeat this sequence of playing an ingredient and drawing a card until you no longer have any playable ingredients. If you don't want to play any playable ingredients for strategic reasons, you can end your turn.
+* To end your turn, you can discard any card in the Graveyard or you can play a Battle Card.
+* At the end of your turn, you will have 5 cards in your hand.
+
+
+== BATTLE CARD NOTES
+* The Burgerpocalypse card is optional. If used, show no mercy! When played, all players' ingredients are destroyed, regardless of protection. (The Burger Force Field does NOT protect against Burgerpocalypse.)
+* Battle Cards can only be played during your turn, unless otherwise noted on the card.
+* When playing a Battle Card that removes player's ingredients, the ingredients are placed in the Graveyard with the Battle Card on top.
+* Battle Cards can be discarded without having been used.
+* Battle Cards that add protection only protect your Burger & ingredients from other Battle Cards; however, they are not immune to Destroy.
+* Battle Cards that add ingredients, protection or any special ability will remain to the left of the affected player's Burger; all other Battle Cards go in the Graveyard after being played.
+* When satisfying Battle Cards that add ingredients, place the ingredient behind the Battle Card.
+* The Old Switcheroo can be played regardless of added protection, as it acts on the player's hand, not their Burger.
+* Only one form of protection can be used on your Burger at a time.
+
+== BATTLE CARDS
+
+* Burger Bomb: Blow up another player's Burger by sending their ingredients to the Graveyard.
+* Burger Force Field: Your Burger is now protected from all Battle Cards
+* Burgerpocalypse: Obliterate all players' ingredients, including your own, and toss them in the Graveyard.
+* Destroy!: Destroy any Battle Card of yours or another players and toss it in the Graveyard.
+* Gonna Eat That?: Steal another player's ingredient and add it to your Burger.
+* Grave Digger: Dig through the Graveyard for any needed ingredient and add it to your Burger.
+* I Got Nothin': Toss your hand in the Graveyard and draw 5 new cards
+* More Meat!: Make another player's Burger a double decker by adding an extra Meat to their ingredients list.
+* Pickle Plague: Rain vengeance down upon another player by adding Pickles to their ingredients list.
+* Picky Eater: Throw another player's Lettuce, Tomato or Onion in the Graveyard.
+* The Old Switcheroo: Trade hands with another player.
+* Yours Looks Good!: Trade your Burger and all of your ingredients with another player, including added Battle Cards.
+
+== BURGER CARDS
+
+The eight burger cards and the ingredients that they require are:
+
+* The Classic: Requires bun, lettuce, tomato, onion, American cheese, meat, pickles, ketchup & mustard
+* The Cowboy: Requires bun, lettuce, tomato, onion rings, bacon, cheddar cheese, meat, BBQ sauce
+* The Golden: Requires bun, lettuce, tomato, onion, avocado, American cheese, meat, mayo
+* The Island: Requires bun, lettuce, tomato, onion, teriyaki, pineapple, provolone cheese, meat
+* The Porker: Requires bun, lettuce, tomato, onion, bacon, cheddar cheese, meat, mayo
+* The Shroom: Requires bun, lettuce, tomato, shrooms, grilled onions, Swiss cheese, meat, mayo
+* The Sunrise: Requires bun, lettuce, tomato, egg, bacon, cheddar cheese, meat, mayo
+* The Volcano: Requires bun, lettuce, tomato, onion, pepperjack cheese, meat, jalapeños, hot sauce
+
+== EXPANSION CARDS
+
+The Burger Battle expansion includes 10 exclusive Battle Cards, including 6 standard
+battle cards, 3 joke battle cards, and one blank battle card.
+
+The standard expansion battle cards are:
+
+* Battle Master: This special ability allows the player to draw battle cards from the top of the Graveyard.
+* Burger Armor: Your burger is now protected from all battle cards.
+* Cut the Cheese: Toss another player's cheese in the Graveyard.
+* Force Field Thief: Steal another player's Burger Force Field and add it to your burger.
+* Get Outta Here!: At any time play this card to deflect a Burger Bomb back destroying their burger instead. Draw an extra card next turn.
+* Gross 'n Moldy: Another player didn't notice their bun had gone bad. Toss their bun in the graveyard.
+
+The joke expansion battle cards are:
+
+* French Fried: Make another player's burger a meal by adding french fries to their ingredients list.
+* If You Win, You Lose!: When another player proclaims victory, play this card at any time to win instead.
+* Time to Eat!: Player must leave the game and not return until they have eaten a burger.
+
+The blank battle card can be used to create a Battle Card of your own design.

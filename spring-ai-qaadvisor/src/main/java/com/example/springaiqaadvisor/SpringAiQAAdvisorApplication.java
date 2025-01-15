@@ -17,7 +17,7 @@ public class SpringAiQAAdvisorApplication {
     SpringApplication.run(SpringAiQAAdvisorApplication.class, args);
   }
 
-  @Value("classpath:/BurgerBattle-rules.pdf")
+  @Value("classpath:/BurgerBattle-rules.txt")
   Resource documentResource;
 
   @Bean

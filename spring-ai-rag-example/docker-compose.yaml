@@ -1,14 +1,8 @@
 services:
-  chroma:
-    image: ghcr.io/chroma-core/chroma:latest
-    environment:
-      - IS_PERSISTENT=TRUE
-    volumes:
-      - chroma-data:/chroma/chroma/
+  qdrant:
+    image: 'qdrant/qdrant:latest'
     ports:
-      - 8000:8000
-    networks:
-      - net
+      - '6334:6334'
   zipkin:
     image: ghcr.io/openzipkin/zipkin-slim:${TAG:-latest}
     container_name: zipkin

@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.0-M3</version>
+        <version>3.4.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
@@ -14,8 +14,8 @@
     <name>spring-ai-rag-chat</name>
     <description>Example of doing RAG and Chat with Spring AI</description>
     <properties>
-        <java.version>21</java.version>
-        <spring-ai.version>1.0.0-M3</spring-ai.version>
+        <java.version>23</java.version>
+        <spring-ai.version>1.0.0-M5</spring-ai.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -36,7 +36,7 @@
 
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-chroma-store-spring-boot-starter</artifactId>
+            <artifactId>spring-ai-qdrant-store-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.ai</groupId>
