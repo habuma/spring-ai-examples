@@ -3,7 +3,7 @@ spring:
     name: mcp-client
   ai:
     openai:
+      api-key: ${OPENAI_API_KEY}
       chat:
-        api-key: ${OPENAI_API_KEY}
         options:
           model: gpt-4o-mini
