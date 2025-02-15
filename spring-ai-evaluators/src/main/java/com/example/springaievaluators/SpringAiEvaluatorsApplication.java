@@ -19,7 +19,7 @@ public class SpringAiEvaluatorsApplication {
     SpringApplication.run(SpringAiEvaluatorsApplication.class, args);
   }
 
-  @Value("classpath:/BurgerBattle-rules.pdf")
+  @Value("classpath:/BurgerBattle-rules.txt")
   Resource documentResource;
 
   @Bean

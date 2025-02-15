@@ -15,7 +15,7 @@
     <description>spring-ai-functions</description>
     <properties>
         <java.version>23</java.version>
-        <SPRING_AI_VERSION>1.0.0-M5</SPRING_AI_VERSION>
+        <SPRING_AI_VERSION>1.0.0-M6</SPRING_AI_VERSION>
     </properties>
     <dependencies>
         <dependency>
@@ -50,16 +50,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <repositories>
-        <repository>
-            <id>spring-milestone</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 
 </project>

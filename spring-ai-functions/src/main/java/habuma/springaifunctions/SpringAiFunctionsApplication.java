@@ -32,7 +32,7 @@ public class SpringAiFunctionsApplication {
 
                 String ride = req.param("ride").orElse("Space Mountain");
                 String answer = chatClient.prompt()
-                    .functions("getWaitTime")
+                    .tools("getWaitTime")
                     .user("What's the wait time for " + ride + "?")
                     .call()
                     .content();

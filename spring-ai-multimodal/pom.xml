@@ -15,7 +15,7 @@
 	<description>spring-ai-multimodal</description>
 	<properties>
 		<java.version>23</java.version>
-		<spring-ai.version>1.0.0-M5</spring-ai.version>
+		<spring-ai.version>1.0.0-M6</spring-ai.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -53,15 +53,5 @@
 			</plugin>
 		</plugins>
 	</build>
-	<repositories>
-		<repository>
-			<id>spring-milestones</id>
-			<name>Spring Milestones</name>
-			<url>https://repo.spring.io/milestone</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
 
 </project>

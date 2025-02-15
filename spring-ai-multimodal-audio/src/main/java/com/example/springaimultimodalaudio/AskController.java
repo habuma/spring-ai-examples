@@ -44,7 +44,7 @@ public class AskController {
                 .call()
                 .chatResponse();
 
-        String answer = chatResponse.getResult().getOutput().getContent();
+        String answer = chatResponse.getResult().getOutput().getText();
         log.info("Answer: {}", answer);
 
         return chatResponse.getResult().getOutput().getMedia().getFirst().getDataAsByteArray();

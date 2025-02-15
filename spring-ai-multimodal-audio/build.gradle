@@ -15,11 +15,10 @@ java {
 
 repositories {
     mavenCentral()
-    maven { url 'https://repo.spring.io/snapshot' }
 }
 
 ext {
-    set('springAiVersion', "1.0.0-SNAPSHOT")
+    set('springAiVersion', "1.0.0-M6")
 }
 
 dependencies {

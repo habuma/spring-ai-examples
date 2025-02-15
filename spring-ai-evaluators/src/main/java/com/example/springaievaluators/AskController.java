@@ -17,7 +17,7 @@ public class AskController {
   @PostMapping("/ask")
   public Answer ask(@RequestBody Question question) {
     ChatResponse chatResponse = gameRulesService.askQuestion(question.question());
-    return new Answer(chatResponse.getResult().getOutput().getContent());
+    return new Answer(chatResponse.getResult().getOutput().getText());
   }
 
 }

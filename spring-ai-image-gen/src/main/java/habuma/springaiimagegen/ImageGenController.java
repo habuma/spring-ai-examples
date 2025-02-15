@@ -21,9 +21,9 @@ public class ImageGenController {
     @PostMapping("/imagegen")
     public String imageGen(@RequestBody ImageGenRequest request) {
         ImageOptions options = ImageOptionsBuilder.builder()
-                .withModel("dall-e-3")
-                .withHeight(1024)
-                .withWidth(1024)
+                .model("dall-e-3")
+                .height(1024)
+                .width(1024)
                 .build();
 
         ImagePrompt imagePrompt = new ImagePrompt(request.prompt(), options);

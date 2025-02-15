@@ -1,9 +1,0 @@
-spring:
-  application:
-    name: mcp-client
-  ai:
-    openai:
-      chat:
-        api-key: ${OPENAI_API_KEY}
-        options:
-          model: gpt-4o-mini

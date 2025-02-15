@@ -39,7 +39,7 @@ public class EvaluatorTests {
   void testEvaluation() {
     String question = "What is the grave digger card?";
     ChatResponse response = gameRulesService.askQuestion(question);
-    String responseContent = response.getResult().getOutput().getContent();
+    String responseContent = response.getResult().getOutput().getText();
     var relevancyEvaluator = new RelevancyEvaluator(ChatClient.builder(chatModel));
 
     @SuppressWarnings("unchecked")
