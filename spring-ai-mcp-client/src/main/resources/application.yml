@@ -7,3 +7,8 @@ spring:
       client:
         stdio:
           servers-configuration: classpath:mcp-servers.json
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      chat:
+        options:
+          model: gpt-4o-mini

@@ -10,19 +10,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class AskController {
 
   private final ChatClient chatClient;
-  private final ToolCallbackProvider tools;
 
   public AskController(ChatClient.Builder chatClientBuilder,
                        ToolCallbackProvider tools) { // inject ToolCallbackProvider
-    this.chatClient = chatClientBuilder.build();
-    this.tools = tools;
+    this.chatClient = chatClientBuilder
+        .defaultSystem("Answer all questions with complete sentences.")
+        .defaultTools(tools)
+        .build();
   }
 
   @PostMapping("/ask")
   public Answer ask(@RequestBody Question question) {
     return chatClient.prompt()
         .user(question.question())
-        .tools(tools)  // configure tools
         .call()
         .entity(Answer.class);
   }

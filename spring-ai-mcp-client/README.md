@@ -17,6 +17,10 @@ the MCP Server and adjust the paths accordingly.
 
 ## Running the Client
 
+Before running the application, you'll need to obtain an OpenAI API key from
+https://platform.openai.com. Once you have an API key, set it to an environment
+variable named `OPENAI_API_KEY`.
+
 Run the client as you would any Spring Boot project, either by building
 it and running the JAR file...
 
@@ -40,7 +44,7 @@ payload the has a "question" property. For example, using `curl`:
 ```
 curl -H "Content-Type: application/json" \
   http://localhost:8080/ask \
-  -d '{"question":"What time does Epcot open tomorrow?"}' 
+  -d '{"question":"What time does Epcot open tomorrow?"}'
 ```
 
 Or by using [HTTPie](https://httpie.io/):
@@ -51,6 +55,5 @@ http :8080/ask question="What is the wait for Space Mountain in Disneyland?"
 
 Note that in both the `curl` and HTTPie examples, the question asked is
 one that the ThemeParks.wiki API MCP Server can help answer. If you're
-using a different MCP Server, you'll need to ask questions that it can 
+using a different MCP Server, you'll need to ask questions that it can
 help answer.
-
