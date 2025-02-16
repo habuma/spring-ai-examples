@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "tpapi": {
+      "command": "/Users/habuma/.sdkman/candidates/java/current/bin/java",
+      "args": [
+        "-jar",
+        "/Users/habuma/Projects/spring-ai-sandbox/kt-mcp-server/build/libs/tpapi-mcp-server-0.0.1-SNAPSHOT.jar"
+      ]
+    }
+  }
+}
