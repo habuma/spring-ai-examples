@@ -1,0 +1,42 @@
+<!-- Thymeleaf -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>MCP Client</title>
+        <script src="https://unpkg.com/htmx.org@1.9.12"
+                integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2"
+                crossorigin="anonymous"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            function scrollToBottom(element) {
+                element.scrollTop = element.scrollHeight;
+            }
+        </script>
+    </head>
+    <body  class="h-screen bg-gray-100">
+    <div class="flex h-full">
+
+    <main class="flex flex-col bg-gradient-to-b from-blue-300 to-blue-800 p-4 w-full max-w-full">
+
+    <h1 class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-blue-800">MCP Client</h1>
+
+        <div id="chat" class="rounded-lg bg-blue-100 flex-1 mb-4 p-4 h-full overflow-auto"></div>
+
+        <div>
+            <form
+                class="w-full"
+                hx-post="/ask"
+                hx-swap="beforeend"
+                hx-target="#chat"
+                hx-on="htmx:afterRequest: document.getElementById('message').value = '';scrollToBottom(document.getElementById('chat'));">
+                <div class="flex items-center bg-blue-500 rounded-full p-2 shadow-md">
+                    <input type="text" name="message" id="message" class="font-extrabold bg-blue-200 outline-1 text-blue-800 rounded-full py-2 px-4 w-full" placeholder="Type your question here"/>
+                    <input type="submit" value="Submit" class="bg-blue-600 hover:bg-blue-800 text-blue-100 font-extrabold rounded-full p-2 ml-2" />
+                </div>
+            </form>
+        </div>
+
+    </main>
+    </div>
+    </body>
+</html>

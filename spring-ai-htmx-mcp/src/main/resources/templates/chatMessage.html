@@ -1,0 +1,10 @@
+<!-- Thymeleaf -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <body>
+    <div th:fragment="chatFragment" class="mb-8">
+        <div class="inline-block bg-blue-300 rounded-lg p-2 ml-auto" th:text="${messageIn.message}">Message</div>
+        <p class="mt-4 h-full overflow-auto" th:text="${messageOut}">Response</p>
+    </div>
+    </body>
+</html>

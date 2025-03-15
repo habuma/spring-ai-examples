@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: finspan-assistant
+  ai:
+    openai:
+      chat:
+        options:
+          # Change this if you want to use a different OpenAI model.
+          model: gpt-4o-mini
+      api-key: ${OPENAI_API_KEY}
+    mcp:
+      client:
+        stdio:
+          # The path to the JSON file that contains the Claude Desktop-sstyle configuration
+          # for the MCP servers. Adjust accordingly to match the location of your file.
+          servers-configuration: file:///Users/habuma/mcp-servers.json
+
