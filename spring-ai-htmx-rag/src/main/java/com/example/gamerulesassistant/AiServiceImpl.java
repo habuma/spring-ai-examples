@@ -2,8 +2,8 @@ package com.example.gamerulesassistant;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
-import org.springframework.ai.chat.client.advisor.QuestionAnswerAdvisor;
-import org.springframework.ai.chat.memory.InMemoryChatMemory;
+import org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvisor;
+import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +17,10 @@ public class AiServiceImpl implements AiService {
   public AiServiceImpl(ChatClient.Builder chatClientBuilder, VectorStore vectorStore) {
     this.chatClient = chatClientBuilder
         .defaultAdvisors(
-            new QuestionAnswerAdvisor(vectorStore),
-            new MessageChatMemoryAdvisor(new InMemoryChatMemory()))
+          QuestionAnswerAdvisor.builder(vectorStore).build(),
+          MessageChatMemoryAdvisor.builder(
+            MessageWindowChatMemory.builder().build())
+            .build())
         .build();
   }
 
