@@ -15,7 +15,7 @@ public class AskController {
                        ToolCallbackProvider tools) { // inject ToolCallbackProvider
     this.chatClient = chatClientBuilder
         .defaultSystem("Answer all questions with complete sentences.")
-        .defaultTools(tools)
+        .defaultToolCallbacks(tools)
         .build();
   }
 
