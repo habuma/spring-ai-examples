@@ -19,7 +19,7 @@ repositories {
 ext {
     springCloudVersion = '2023.0.1'
     springFunctionsCatalogVersion = '5.0.0-SNAPSHOT'
-    springAiVersion = "1.0.0-M6"
+    springAiVersion = "1.0.0"
 }
 
 dependencyManagement {
@@ -35,8 +35,8 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-function-context'
     implementation 'org.springframework.cloud.fn:spring-file-supplier'
     implementation 'org.springframework.ai:spring-ai-tika-document-reader'
-    implementation 'org.springframework.ai:spring-ai-openai-spring-boot-starter'
-    implementation 'org.springframework.ai:spring-ai-chroma-store-spring-boot-starter'
+    implementation 'org.springframework.ai:spring-ai-starter-model-openai'
+    implementation 'org.springframework.ai:spring-ai-starter-vector-store-chroma'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     runtimeOnly 'org.springframework.boot:spring-boot-docker-compose'

@@ -19,7 +19,7 @@
         <java.version>23</java.version>
         <spring.cloud.version>2023.0.1</spring.cloud.version>
         <spring.functions.catalog.version>5.0.0-SNAPSHOT</spring.functions.catalog.version>
-        <spring.ai.version>1.0.0-M6</spring.ai.version>
+        <spring.ai.version>1.0.0</spring.ai.version>
     </properties>
 
     <dependencies>
@@ -41,11 +41,11 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-openai-spring-boot-starter</artifactId>
+            <artifactId>spring-ai-starter-model-openai</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-chroma-store-spring-boot-starter</artifactId>
+            <artifactId>spring-ai-starter-vector-store-chroma</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
