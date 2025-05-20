@@ -5,7 +5,7 @@ plugins {
 }
 
 ext {
-    springAiVersion = "1.0.0-M4"
+    springAiVersion = "1.0.0"
 }
 
 group = 'com.example'
@@ -22,15 +22,15 @@ repositories {
 }
 
 ext {
-    set('springAiVersion', "1.0.0-M6")
+    set('springAiVersion', "1.0.0")
 }
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'io.github.wimdeblauwe:htmx-spring-boot-thymeleaf:3.4.0'
-    implementation 'org.springframework.ai:spring-ai-openai-spring-boot-starter'
-    implementation 'org.springframework.ai:spring-ai-mcp-client-spring-boot-starter'
+    implementation 'org.springframework.ai:spring-ai-starter-model-openai'
+    implementation 'org.springframework.ai:spring-ai-starter-mcp-client'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
