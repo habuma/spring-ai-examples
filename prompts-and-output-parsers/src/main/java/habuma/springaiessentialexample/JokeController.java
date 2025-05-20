@@ -20,7 +20,7 @@ public class JokeController {
     }
 
     @GetMapping("/joke")
-    public JokeResponse tellJoke(@RequestParam("subject") String subject) {
+    public JokeResponse tellJoke(@RequestParam(name="subject", defaultValue="penguins") String subject) {
         return chatClient.prompt()
             .user(userSpec -> userSpec
                 .text(jokeTemplate)
