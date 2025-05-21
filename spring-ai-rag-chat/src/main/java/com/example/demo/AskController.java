@@ -1,14 +1,14 @@
 package com.example.demo;
 
-import static org.springframework.ai.chat.client.advisor
-    .AbstractChatMemoryAdvisor.CHAT_MEMORY_CONVERSATION_ID_KEY;
+import static org.springframework.ai.chat.memory
+    .ChatMemory.CONVERSATION_ID;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
-import org.springframework.ai.chat.client.advisor.QuestionAnswerAdvisor;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
+import org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
-import org.springframework.ai.chat.memory.InMemoryChatMemory;
+import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,12 +22,12 @@ public class AskController {
 
   public AskController(ChatClient.Builder chatClientBuilder,
                        VectorStore vectorStore) {
-    ChatMemory chatMemory = new InMemoryChatMemory();
+    ChatMemory chatMemory = MessageWindowChatMemory.builder().build();
     this.chatClient = chatClientBuilder
         .defaultAdvisors(
-            new MessageChatMemoryAdvisor(chatMemory),
-            new QuestionAnswerAdvisor(vectorStore),
-            new SimpleLoggerAdvisor())
+            MessageChatMemoryAdvisor.builder(chatMemory).build(),
+            QuestionAnswerAdvisor.builder(vectorStore).build(),
+            SimpleLoggerAdvisor.builder().build())
         .build();
   }
 
@@ -38,7 +38,7 @@ public class AskController {
 
     return chatClient.prompt()
         .user(question.question())
-        .advisors(spec -> spec.param(CHAT_MEMORY_CONVERSATION_ID_KEY, conversationId))
+        .advisors(spec -> spec.param(CONVERSATION_ID, conversationId))
         .call()
         .entity(Answer.class);
 
