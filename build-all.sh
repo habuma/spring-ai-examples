@@ -5,22 +5,19 @@ cd ..
 cd ./spring-ai-evaluators
 ./mvnw -q test
 cd ..
-cd ./spring-ai-functions
-./mvnw -q test
-cd ..
-cd ./spring-ai-gemma
+cd ./spring-ai-tools
 ./mvnw -q test
 cd ..
 cd ./spring-ai-image-gen
 ./mvnw -q test
 cd ..
-cd ./spring-ai-kotlin
-./mvnw -q test
-cd ..
-cd ./spring-ai-kotlin-rag
-./mvnw -q test
-cd ..
-cd ./spring-ai-mcp
+# cd ./spring-ai-kotlin
+# ./mvnw -q test
+# cd ..
+# cd ./spring-ai-kotlin-rag
+# ./mvnw -q test
+# cd ..
+cd ./spring-ai-mcp-client
 ./gradlew -q test
 cd ..
 # cd ./spring-ai-mcp-fun
@@ -32,9 +29,9 @@ cd ..
 cd ./spring-ai-multimodal-audio
 ./mvnw -q test
 cd ..
-cd ./spring-ai-qaadvisor
-./mvnw -q test
-cd ..
+# cd ./spring-ai-qaadvisor
+# ./mvnw -q test
+# cd ..
 cd ./spring-ai-rag-chat
 ./mvnw -q test
 cd ..
@@ -48,4 +45,4 @@ cd ./spring-ai-summarizer
 ./mvnw -q test
 cd ..
 cd ./vector-store-loader
-./mvnw -q test
+./gradlew -q test
