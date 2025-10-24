@@ -1,12 +1,9 @@
-package habuma.springaifunctions;
-
-import java.util.function.Function;
+package habuma.springaitools;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Description;
 import org.springframework.web.servlet.function.RouterFunction;
 import org.springframework.web.servlet.function.RouterFunctions;
 import org.springframework.web.servlet.function.ServerResponse;
@@ -19,20 +16,16 @@ public class SpringAiFunctionsApplication {
     }
 
     @Bean
-    @Description("Get the wait time for a Disneyland attraction in minutes")
-    public Function<WaitTimeService.Request, WaitTimeService.Response> getWaitTime() {
-        return new WaitTimeService();
-    }
-
-    @Bean
-    RouterFunction<ServerResponse> routes(ChatClient.Builder chatClientBuilder) {
+    RouterFunction<ServerResponse> routes(
+          ChatClient.Builder chatClientBuilder,
+          WaitTimeService waitTimeService) {
         return RouterFunctions.route()
             .GET("/waitTime", req -> {
                 ChatClient chatClient = chatClientBuilder.build();
 
                 String ride = req.param("ride").orElse("Space Mountain");
                 String answer = chatClient.prompt()
-                    .tools("getWaitTime")
+                    .tools(waitTimeService)
                     .user("What's the wait time for " + ride + "?")
                     .call()
                     .content();

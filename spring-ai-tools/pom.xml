@@ -5,17 +5,17 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.1</version>
+        <version>3.5.7</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>habuma</groupId>
-    <artifactId>spring-ai-functions</artifactId>
+    <artifactId>spring-ai-tools</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-ai-functions</name>
-    <description>spring-ai-functions</description>
+    <name>spring-ai-tools</name>
+    <description>spring-ai-tools</description>
     <properties>
-        <java.version>23</java.version>
-        <SPRING_AI_VERSION>1.0.0</SPRING_AI_VERSION>
+        <java.version>25</java.version>
+        <SPRING_AI_VERSION>1.0.3</SPRING_AI_VERSION>
     </properties>
     <dependencies>
         <dependency>
