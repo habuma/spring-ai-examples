@@ -11,9 +11,9 @@ cd ..
 cd ./spring-ai-image-gen
 ./mvnw -q test
 cd ..
-# cd ./spring-ai-kotlin
-# ./mvnw -q test
-# cd ..
+cd ./spring-ai-kotlin
+./mvnw -q test
+cd ..
 # cd ./spring-ai-kotlin-rag
 # ./mvnw -q test
 # cd ..
