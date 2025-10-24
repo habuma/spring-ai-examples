@@ -1,25 +1,26 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.2.3'
-    id 'io.spring.dependency-management' version '1.1.4'
+    id 'org.springframework.boot' version '3.5.7'
+    id 'io.spring.dependency-management' version '1.1.7'
 }
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 
 java {
-    sourceCompatibility = '17'
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
 }
 
 repositories {
     mavenCentral()
-    maven { url 'https://repo.spring.io/snapshot' }
 }
 
 ext {
-    springCloudVersion = '2023.0.1'
-    springFunctionsCatalogVersion = '5.0.0-SNAPSHOT'
-    springAiVersion = "1.0.0"
+    springCloudVersion = '2025.0.0'
+    springFunctionsCatalogVersion = '5.1.0'
+    springAiVersion = "1.0.3"
 }
 
 dependencyManagement {
@@ -36,7 +37,7 @@ dependencies {
     implementation 'org.springframework.cloud.fn:spring-file-supplier'
     implementation 'org.springframework.ai:spring-ai-tika-document-reader'
     implementation 'org.springframework.ai:spring-ai-starter-model-openai'
-    implementation 'org.springframework.ai:spring-ai-starter-vector-store-chroma'
+    implementation 'org.springframework.ai:spring-ai-starter-vector-store-qdrant'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     runtimeOnly 'org.springframework.boot:spring-boot-docker-compose'

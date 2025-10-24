@@ -6,7 +6,7 @@ spring:
     openai:
       api-key: "${OPENAI_API_KEY}"
     vectorstore:
-      chroma:
+      qdrant:
         initialize-schema: true
 
 file:
