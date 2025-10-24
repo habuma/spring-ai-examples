@@ -14,15 +14,15 @@ cd ..
 cd ./spring-ai-kotlin
 ./mvnw -q test
 cd ..
-# cd ./spring-ai-kotlin-rag
-# ./mvnw -q test
-# cd ..
+cd ./spring-ai-kotlin-rag
+./mvnw -q test
+cd ..
 cd ./spring-ai-mcp-client
 ./gradlew -q test
 cd ..
-# cd ./spring-ai-mcp-fun
-# ./gradlew -q test
-# cd ..
+cd ./spring-ai-mcp-client
+./gradlew -q test
+cd ..
 cd ./spring-ai-multimodal
 ./mvnw -q test
 cd ..
