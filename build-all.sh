@@ -29,9 +29,6 @@ cd ..
 cd ./spring-ai-multimodal-audio
 ./mvnw -q test
 cd ..
-# cd ./spring-ai-qaadvisor
-# ./mvnw -q test
-# cd ..
 cd ./spring-ai-rag-chat
 ./mvnw -q test
 cd ..
