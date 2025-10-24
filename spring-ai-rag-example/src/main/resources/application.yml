@@ -2,7 +2,7 @@
 ### e.g., app.resource=file:///Users/yourname/Downloads/yourfile.pdf
 ###    or app.resource=classpath:/data/myfile.pdf
 app:
-  resource: https://en.wikipedia.org/wiki/Chess
+  resource: classpath:/2024-nfl-rulebook.pdf
 spring:
   ai:
     openai:
