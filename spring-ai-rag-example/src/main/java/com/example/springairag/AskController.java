@@ -24,7 +24,7 @@ public class AskController {
     public Answer ask(@RequestBody Question question) {
         String answer = aiClient.prompt()
             .user(question.question())
-            .advisors(new QuestionAnswerAdvisor(vectorStore))
+            .advisors(QuestionAnswerAdvisor.builder(vectorStore).build())
             .call()
             .content();
 
