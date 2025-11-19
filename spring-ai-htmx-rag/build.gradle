@@ -5,7 +5,7 @@ plugins {
 }
 
 ext {
-    springAiVersion = "1.0.3"
+    springAiVersion = "1.1.0"
 }
 
 group = 'com.example'
@@ -22,7 +22,7 @@ repositories {
 }
 
 ext {
-    set('springAiVersion', "1.0.3")
+    set('springAiVersion', "1.1.0")
 }
 
 dependencies {

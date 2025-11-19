@@ -20,7 +20,7 @@ repositories {
 ext {
     springCloudVersion = '2025.0.0'
     springFunctionsCatalogVersion = '5.1.0'
-    springAiVersion = "1.0.3"
+    springAiVersion = "1.1.0"
 }
 
 dependencyManagement {

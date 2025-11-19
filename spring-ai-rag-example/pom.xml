@@ -15,7 +15,7 @@
     <description>Example of doing RAG in Spring AI</description>
     <properties>
         <java.version>25</java.version>
-        <spring-ai.version>1.0.3</spring-ai.version>
+        <spring-ai.version>1.1.0</spring-ai.version>
     </properties>
     <dependencyManagement>
         <dependencies>

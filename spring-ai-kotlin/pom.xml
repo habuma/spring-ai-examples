@@ -29,7 +29,7 @@
     <properties>
         <java.version>24</java.version>
         <kotlin.version>2.2.21</kotlin.version>
-        <spring-ai.version>1.0.3</spring-ai.version>
+        <spring-ai.version>1.1.0</spring-ai.version>
     </properties>
     <dependencies>
         <dependency>
