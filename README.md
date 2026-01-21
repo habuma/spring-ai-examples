@@ -10,7 +10,7 @@ to select individual projects and create them locally.
 
 If you like this repository of example, then you're going to love [Spring AI in
 Action](https://www.manning.com/books/spring-ai-in-action?a_aid=habuma&a_bid=f205d999&chan=habuma),
-now available in Manning's Early Access Program (MEAP). It covers all aspects of
+now available at Manning.com, Amazon, and anywhere you buy tech books. It covers all aspects of
 working with Spring AI with a fun example that runs throughout most of the book.
 
 ![Spring AI in Action](https://www.habuma.com/img/SAIiA_small.png "Spring AI in Action")
