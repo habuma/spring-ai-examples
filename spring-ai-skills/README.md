@@ -1,14 +1,20 @@
 Spring AI Skills Demo
 ===
 This project demonstrates how to use Claude-like skills in Spring AI.
+It demonstrates that Claude Skills can be defined and used in Spring AI
+even when not using a Claude model.
 
-At least in theory, this should work with models other than Claude models.
-However, I've not yet had any luck getting this to work with any models
-other than Claude Haiku, Sonnet, or Opus. Therefore...
+Before running this demo, you'll need to decide whether you'll be testing
+this with Anthropic, OpenAI, Ollama, or Gemini. The OpenAI dependency is
+uncommented in build.gradle, but you can comment it out and uncomment one
+of the other dependencies.
 
-Before running this demo, you'll need to obtain an Anthropic API key from
-the [Claude Developer Platform](https://platform.claude.com/dashboard). Set
-an `ANTHROPIC_API_KEY` environment variable to the API key you get.
+Then, unless you choose Ollama, you'll need to obtain an API KEY (or project
+ID in the case of Gemini) and set the appropriate environment variable:
+
+ - `OPENAI_API_KEY` - For OpenAI
+ - `ANTHROPIC_API_KEY` - For Claude
+ - `GOOGLE_CLOUD_PROJECT` - For Google
 
 The skill used in this project executes a Python script using the [uv](https://github.com/astral-sh/uv)
 package manager. For it to work, you'll need to have `uv` installed.

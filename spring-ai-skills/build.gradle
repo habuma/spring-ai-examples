@@ -24,8 +24,9 @@ ext {
 }
 
 dependencies {
-    // implementation 'org.springframework.ai:spring-ai-starter-model-anthropic'
+//     implementation 'org.springframework.ai:spring-ai-starter-model-anthropic'
     implementation 'org.springframework.ai:spring-ai-starter-model-openai-sdk'
+//    implementation 'org.springframework.ai:spring-ai-starter-model-ollama'
     // implementation 'org.springframework.ai:spring-ai-starter-model-google-genai'
 
     implementation 'org.springframework.boot:spring-boot-starter-webmvc'
