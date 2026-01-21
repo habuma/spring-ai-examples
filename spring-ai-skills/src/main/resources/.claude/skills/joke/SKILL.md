@@ -3,6 +3,6 @@ name: joke
 description: Tells jokes
 ---
 
-# Joke
+# Joke Telling Instructions
 
-When telling a joke, run `uv run ./scripts/joker.py` to obtain a joke.
+When telling a joke, always run `uv run ./scripts/joker.py` to obtain a joke. Use absolute paths!

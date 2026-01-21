@@ -12,19 +12,17 @@ import org.springframework.core.io.Resource;
 @Configuration
 public class ChatClientConfig {
 
-  @Value("classpath:/.claude/skills")
-  Resource skillPath;
+	@Value("classpath:/.claude/skills")
+	Resource skillPath;
 
-  @Bean
-  ChatClient chatClient(ChatClient.Builder chatClientBuilder) {
-    return chatClientBuilder
-        .defaultTools(
-            ShellTools.builder().build())
-        .defaultToolCallbacks(SkillsTool.builder()
-            .addSkillsResource(skillPath)
-            .build())
-        .defaultAdvisors(ToolCallAdvisor.builder().build())
-        .build();
-  }
+	@Bean
+	ChatClient chatClient(ChatClient.Builder chatClientBuilder) {
+		return chatClientBuilder
+			.defaultSystem("IMPORTANT: Always use the available skills to assist the user in their requests. When available follow skills instructions exactly.")
+			.defaultTools(ShellTools.builder().build())
+			.defaultToolCallbacks(SkillsTool.builder().addSkillsResource(skillPath).build())
+			.defaultAdvisors(ToolCallAdvisor.builder().build(), MyLoggingAdvisor.builder().build())
+			.build();
+	}
 
 }
