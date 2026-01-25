@@ -16,18 +16,21 @@ java {
 
 repositories {
     mavenCentral()
+    mavenLocal()
     maven { url 'https://repo.spring.io/snapshot' }
 }
 
 ext {
-    set('springAiVersion', "2.0.0-SNAPSHOT")
+    set('springAiVersion', "2.0.0-M2")
 }
 
 dependencies {
     implementation 'org.springframework.ai:spring-ai-starter-model-openai-sdk'
 
     implementation 'org.springframework.boot:spring-boot-starter-webmvc'
-    implementation 'org.springaicommunity:spring-ai-agent-utils:0.4.1'
+
+    // 0.5.0-SNAPSHOT isn't available yet, so you need to build it yourself
+    implementation 'org.springaicommunity:spring-ai-agent-utils:0.5.0-SNAPSHOT'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'

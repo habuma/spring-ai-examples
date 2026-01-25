@@ -17,7 +17,7 @@ public class SpringAiUserQuestionsApplication {
   ApplicationRunner go(ChatClient chatClient) {
     return args -> {
       var response = chatClient.prompt()
-          .user("What board game should we play?")
+          .user("What resort hotel should we stay at when we visit Disneyland?")
           .call()
           .content();
 
