@@ -28,10 +28,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.ai:spring-ai-starter-model-openai'
 
-    // The Spring AI A2A module is not (yet) in a public repository.
-    // So you'll need to build it yourself from the code at
-    // https://github.com/spring-ai-community/spring-ai-a2a
-    implementation 'org.springaicommunity:spring-ai-a2a-server-autoconfigure:0.1.0-SNAPSHOT'
+    implementation 'org.springaicommunity:spring-ai-a2a-server-autoconfigure:0.1.0'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'

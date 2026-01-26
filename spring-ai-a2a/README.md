@@ -3,13 +3,7 @@ Spring AI A2A Demo
 This example demonstrates how to create a very simple agent with Spring AI
 and expose it via Agent-to-Agent Protocol (A2A).
 
-This example builds against the Spring AI A2A Community project at
-https://github.com/spring-ai-community/spring-ai-a2a. There is not (yet) a
-build for that project available in any public repository. Therefore, you'll
-need to build that project, installing it in your local Maven repository
-before building and running this project.
-
-You'll also need to obtain an OpenAI API key and set it to the `OPENAI_API_KEY`
+You'll need to obtain an OpenAI API key and set it to the `OPENAI_API_KEY`
 environment variable. Then you can run the application using the Spring Boot
 Gradle plugin:
 
