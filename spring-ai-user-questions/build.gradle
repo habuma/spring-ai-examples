@@ -29,8 +29,7 @@ dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter-webmvc'
 
-    // 0.5.0-SNAPSHOT isn't available yet, so you need to build it yourself
-    implementation 'org.springaicommunity:spring-ai-agent-utils:0.5.0-SNAPSHOT'
+    implementation 'org.springaicommunity:spring-ai-agent-utils:0.4.2'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
