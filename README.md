@@ -44,3 +44,10 @@ now available at Manning.com, Amazon, and anywhere you buy tech books. It covers
 working with Spring AI with a fun example that runs throughout most of the book.
 
 ![Spring AI in Action](https://www.habuma.com/img/SAIiA_small.png "Spring AI in Action")
+
+## Contributor Quick Verification
+<!-- clean-diff-b30-readme -->
+
+- Build with the project-recommended command
+- Run tests before opening PR
+- Keep each PR scoped to one concern
