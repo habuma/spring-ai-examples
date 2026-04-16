@@ -8,10 +8,20 @@ and clients.
 There are two MCP servers, one each for the STDIO transport and the HTTP
 Streaming transport. And there are corresponding clients for each server.
 
+Prerequisites
+---
+Before running the scripts, make sure these commands work in your shell:
+
+```shell
+jbang version
+ollama list
+ollama pull gpt-oss
+```
+
 To use these scripts, you'll need to first make sure that JBang is installed.
 And if you will be using the clients, you'll need to have
 [Ollama](https://ollama.com/) installed and will need to have pulled the
-GPT-OSS model.
+GPT-OSS model. If you only want to run the servers, JBang alone is sufficient.
 
 STDIO
 ---

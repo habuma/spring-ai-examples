@@ -2,6 +2,16 @@
 A Spring Boot application that loads a vector store from files dropped into
 a directory.
 
+## Prerequisites
+
+Before starting the application, make sure the following commands work:
+
+```shell
+docker ps
+docker compose version
+echo $OPENAI_API_KEY
+```
+
 ## Quick Start
 You'll need Docker installed and running on your machine. When the application
 starts, it uses a docker-compose.yaml file to start a ChromaDB instance.
@@ -80,7 +90,7 @@ spring:
 
 The `fileSupplier` function is provided by the Spring Function Catalog and
 is configured in `src/main/resources/application.yml` to watch for files to
-appear in the `/etc/dropoff` directory. When a file appears, the function
+appear in the `/tmp/dropoff` directory. When a file appears, the function
 reads the file and sends it to the `documentReader` function as a
 `Message<byte[]>` wrapped in a `Flux`.
 
@@ -106,5 +116,5 @@ been carried in a `Flux` (because that's what the `fileSupplier` emits), but
 
 The function is kicked off by the `ApplicationRunner` bean, which looks up
 the composed function and calls its `run()` method. From that point, the
-`fileSupplier` function is watching for files to appear in the `/etc/dropoff`
+`fileSupplier` function is watching for files to appear in the `/tmp/dropoff`
 directory.
