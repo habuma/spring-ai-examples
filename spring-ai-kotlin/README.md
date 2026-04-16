@@ -2,6 +2,8 @@ Spring AI with Kotlin
 ===
 This example shows how to do a basic Spring AI application in Kotlin.
 
+## Prerequisites
+
 Before running the application, you'll need to obtain an API key for
 OpenAI's API. Go to https://openai.com/, sign up for an account, and
 generate an API key. Once you have an API key, set it to the
@@ -13,12 +15,16 @@ generate an API key. Once you have an API key, set it to the
 
 (The actual API key will be quite a bit longer.)
 
+## Run the application
+
 The easiest way to run the application is to use the Spring Boot Maven
 plugin:
 
 ~~~
 % ./mvnw spring-boot:run
 ~~~
+
+## Try it
 
 Once the application starts up, you can begin asking questions by
 POSTing to the `/ask` endpoint. The body of the POST request should be
