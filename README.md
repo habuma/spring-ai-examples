@@ -6,6 +6,35 @@ You can clone this project in its entirety and work with it like that. *Or*
 better, use the [SpringCLI](https://docs.spring.io/spring-cli/reference/index.html)
 to select individual projects and create them locally.
 
+## Working With a Single Example
+
+Each directory in this repository is a self-contained sample with its own build
+wrapper and README.
+
+For Maven-based examples, run the wrapper from the example directory:
+
+```shell
+cd spring-ai-rag-example
+./mvnw spring-boot:run
+```
+
+For Gradle-based examples, use the local Gradle wrapper:
+
+```shell
+cd spring-ai-a2a
+./gradlew bootRun
+```
+
+For the JBang scripts, run them directly from the `jbang-mcp` directory:
+
+```shell
+cd jbang-mcp
+jbang McpClientStdio.java
+```
+
+Before starting an example, check its README for any required environment
+variables or local dependencies such as Docker, Ollama, or JBang.
+
 ## Want more?
 
 If you like this repository of example, then you're going to love [Spring AI in
